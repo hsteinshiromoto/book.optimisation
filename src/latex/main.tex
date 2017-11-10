@@ -2,7 +2,7 @@
 
 \documentclass[sfsidenotes,notoc,nobib,a4paper]{tufte-book}
 
-\title{Statistical models}
+\title{Optimisation}
 \author{Humberto Stein Shiromoto}
 \date{\today}
 
@@ -20,49 +20,10 @@
 \adjustmtc
 \printnomenclature
 
-\part{Probability \& Stochastic Processes}
-\input{./probability_theory/content.tex}
-
-\part{Statistics}
-\input{./hypothesis_testing/content.tex}
-
-\part{Model Design}
-
-\chapter{The Bias-Variance Tradeoff}
-
-The derivation of the bias–variance decomposition for squared error proceeds as follows. Let $f=f(x)$ and $\hat{f}=\hat {f}(x)$. First, recall that, by definition, for any random variable $X$, we have
-\begin{equation*}
-\mathrm{Var}[X] = \mathrm{E}[X^2] - \mathrm{E}[X]^2
-\end{equation*}
-Rearranging, we get:
-\begin{equation*}
-\mathrm{E}[X^2] = \mathrm{Var}[X] + \mathrm{E}[X]^2	
-\end{equation*}
-Since $f$ is deterministic, $\mathrm{E}[f] = f$. This, given $y=f+\epsilon$  and $\mathrm{E}[\epsilon ]=0$, implies $\mathrm  {E}[y]={\mathrm  {E}}[f+\epsilon ]={\mathrm  {E}}[f]=f$.
-Also, since $\mathrm{Var}[\epsilon ]=\sigma ^{2}$,
-\begin{equation*}
-	\mathrm {Var} [y]=\mathrm {E} [(y-\mathrm {E} [y])^{2}]=\mathrm {E} [(y-f)^{2}]=\mathrm {E} [(f+\epsilon -f)^{2}]=\mathrm {E} [\epsilon ^{2}]=\mathrm {Var} [\epsilon ]+\mathrm {E} [\epsilon ]^{2}=\sigma ^{2}\;.
-\end{equation*}
-Thus, since $\epsilon$  and $\hat {f}$ are independent, we can write
-\begin{align*}
-	\mathrm {E} {\big [}(y-{\hat {f}})^{2}{\big ]}&=\mathrm {E} [y^{2}+{\hat {f}}^{2}-2y{\hat {f}}]\\&=\mathrm {E} [y^{2}]+\mathrm {E} [{\hat {f}}^{2}]-\mathrm {E} [2y{\hat {f}}]\\&=\mathrm {Var} [y]+\mathrm {E} [y]^{2}+\mathrm {Var} [{\hat {f}}]+\mathrm {E} [{\hat {f}}]^{2}-2f\mathrm {E} [{\hat {f}}]\\&=\mathrm {Var} [y]+\mathrm {Var} [{\hat {f}}]+(f^{2}-2f\mathrm {E} [{\hat {f}}]+\mathrm {E} [{\hat {f}}]^{2})\\&=\mathrm {Var} [y]+\mathrm {Var} [{\hat {f}}]+(f-\mathrm {E} [{\hat {f}}])^{2}\\&=\sigma ^{2}+\mathrm {Var} [{\hat {f}}]+\mathrm {Bias} [{\hat {f}}]^{2}
-\end{align*}
-
-QED$\blacksquare$
-
-% Linear regression
-\input{./linear_regression/content.tex}
-
-% Classification
-\input{./classification/content.tex}
-
-% Decision Trees
-\input{./trees/content.tex}
-
 \appendix
-\input{appendix.tex}
+%\input{appendix.tex}
 
-\input{bibliography.tex}
+%\input{bibliography.tex}
 
 \printbibliography[heading=bibintoc]
 \printindex
