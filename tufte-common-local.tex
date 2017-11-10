@@ -1,0 +1,355 @@
+% !TEX encoding = UTF-8 Unicode
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AMS Packages
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Compiler Configuration Package
+
+\usepackage{ifxetex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts Packages
+
+\ifxetex
+	 \usepackage[small,euler-digits,euler-hat-accent,OT1]{eulervm} %Load before mathspec and fontspec packages
+	
+	\usepackage{fontspec}
+	
+	
+	\defaultfontfeatures{Mapping=tex-text,
+						Ligatures={TeX,Common},
+						Scale=MatchLowercase,
+						Color=textcolor}
+
+	\newfontfamily{\sectioningtitle}[
+				 Extension      = .ttf,
+				 UprightFont	= *,
+				 BoldFont		= *-Bold,
+			 	 ItalicFont		= *-Oblique,
+			 	 BoldItalicFont = *-BoldOblique]
+				 {Adobe Garamond Pro}
+	
+	\setmainfont[Extension      = .ttf,
+				 UprightFont	= *,
+				 BoldFont		= *-Bold,
+			 	 ItalicFont		= *-Oblique,
+			 	 BoldItalicFont = *-BoldOblique,
+			 	 Numbers={OldStyle,Proportional}]
+				 {Adobe Garamond Pro}
+				 
+	\setsansfont[Scale			= MatchUppercase,
+    			 Extension		= .otf,
+    			 UprightFont	= *-regular,
+    			 BoldFont 		= *-bold,
+    			 ItalicFont     = *-italic,
+    			 BoldItalicFont = *-bolditalic]
+    			 {texgyreheros}
+				 
+	%\setmonofont{Lucida Sans Typewriter}
+	
+	
+     
+\else
+	\usepackage[utf8]{inputenc}
+	\usepackage[small,euler-digits,euler-hat-accent,OT1]{eulervm} %
+	\usepackage{mathpazo}
+\fi
+\usepackage{mathrsfs} 
+
+\ifxetex
+	% Begin of command necessary in Tufte to run with XeLaTeX
+	\newcommand{\textls}[2][5]{%
+    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
+  }
+  \renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+  \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+  \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+  \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+  \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+   % End of command necessary in Tufte to run with XeLaTeX
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Language Packages
+
+\ifxetex
+	\usepackage{polyglossia}
+	\setdefaultlanguage[variant=british]{english}
+	%\setotherlanguages{french,portuges,italian}
+	\setotherlanguages{portuges,italian} % French languages leads to serifed footnote font
+\else
+	\usepackage[english]{babel}
+\fi
+
+\usepackage{csquotes}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics Packages
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{./imgs/}{./linear_regression/imgs/}{./classification/imgs/}{./trees/imgs/}{./hypothesis_testing/imgs/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+  
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{svg}
+
+\definecolor{gblue900}{HTML}{0D47A1}
+\definecolor{ggreen900}{HTML}{1B5E20}
+\definecolor{gred900}{HTML}{B71C1C}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperref Package
+\usepackage{hyphenat}
+\usepackage{hyperref}% backref linktocpage pagebackref
+%
+\hypersetup{
+% Uncomment the line below to remove all links (to references, figures, tables, etc)
+%draft, 
+colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,
+% Uncomment the line below if you want to have black links (e.g. for printing black and white)
+%colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV, 
+breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,
+plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,
+hypertexnames=true, pdfhighlight=/O, urlcolor=gred900, linkcolor=gblue900, citecolor=ggreen900,
+%
+% PDF file meta-information
+%
+pdftitle={Answers},
+pdfauthor={Humberto Stein Shiromoto},
+pdfsubject={},
+pdfkeywords={},
+pdfcreator={},
+pdfproducer={LaTeX}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sectioning customization
+% add numbers to chapters, sections, subsections
+\setcounter{secnumdepth}{2}
+% to allow custom headings
+\usepackage{titlesec}
+%\usepackage{titling} % This package replaces Tufte's titlepage
+
+% part format
+\titleformat{\part}[display]
+   {\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
+   {\Huge\bfseries\sffamily Part\ \thepart}
+   {0em}
+   {\hrule\Huge\bfseries\sffamily}% before the title body
+   [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}]
+
+% chapter format
+\titleformat{\chapter}%
+  [block]% shape
+  {\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
+  {\Huge\bfseries\sffamily\thechapter\ \raisebox{2pt}{|}\ }% label
+  {0pt}% horizontal separation between label and title body
+  {\Huge\bfseries\sffamily}% before the title body
+  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}]
+  
+%  section format
+\ifxetex
+	\titleformat{\section}%
+  	[hang]% shape
+  	{\LARGE\bfseries\sectioningtitle}% format applied to label+text
+  	{\LARGE\bfseries\sectioningtitle\thesection}% label
+  	{5pt}% horizontal separation between label and title body
+  	{}% before the title body
+	[]% after the title body
+
+% subsection format
+	\titleformat{\subsection}%
+  	{\Large\bfseries\sectioningtitle}% format applied to label+text
+  	{\Large\bfseries\sectioningtitle\thesubsection}% label
+  	{5pt}% horizontal separation between label and title body
+  	{}% before the title body
+  	[]% after the title body
+\else
+  \titleformat{\section}%
+  	[hang]% shape
+  	{\LARGE\bfseries}% format applied to label+text
+  	{\LARGE\bfseries\thesection}% label
+  	{5pt}% horizontal separation between label and title body
+  	{}% before the title body
+  	[]% after the title body
+
+% subsection format
+	\titleformat{\subsection}%
+  	{\Large\bfseries}% format applied to label+text
+  	{\Large\bfseries\thesubsection}% label
+  	{5pt}% horizontal separation between label and title body
+  	{}% before the title body
+  	[]% after the title body
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful Packages
+\usepackage{imakeidx}         % allows index generation
+\makeindex[columns=2, title=Alphabetical Index, intoc, options= -s index_style.ist]
+
+\usepackage{mdframed}
+\usepackage{todonotes}
+\usepackage{enumerate}
+\usepackage{paralist}
+\usepackage{comment}
+\usepackage{minitoc}
+\dominitoc
+\usepackage{rotating}
+\usepackage{nicefrac}
+\usepackage{cleveref}
+\usepackage[caption=false]{subfig}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Listings Package
+
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{ %
+%  language=R,                     % the language of the code
+  basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},      % keyword style
+  commentstyle=\color{dkgreen},   % comment style
+  stringstyle=\color{mauve},      % string literal style
+  escapeinside={\%*}{*)},         % if you want to add a comment within your code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  resetmargins=False,
+  xleftmargin=0pt,
+  xrightmargin=0pt,
+} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Float Package
+%\usepackage{float}
+%\newfloat{lstfloat}{htbp}{lop}
+%\floatname{lstfloat}{Listing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header and footnotes
+%
+\fancyhf{} % clear header and footer fields
+\ifthenelse{\boolean{@tufte@twoside}}
+  {\fancyhead[LE]{\sffamily\footnotesize{\thepage}\quad \raisebox{1pt}{|}\quad{\footnotesize\newlinetospace{\allcaps\plainauthor}}}%
+    \fancyhead[RO]{\sffamily{\footnotesize\newlinetospace{\allcaps\plaintitle}}\footnotesize\quad \raisebox{1pt}{|}\quad{\footnotesize\thepage}}}
+  {\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\footnotesize\quad\thepage}}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nomenclature package
+\usepackage[intoc,refpage]{nomencl}
+\renewcommand{\nomname}{Acronyms and List of Notations}
+\def\pagedeclaration#1{, \hyperlink{page.#1}{page\nobreakspace#1}}
+\makenomenclature
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography Packages
+
+\usepackage[natbib=true,%
+backend=biber,%
+style=alphabetic,%
+sorting=anyvt,%
+firstinits=true,%
+doi=true,%
+isbn=false,%
+url=false,%
+backref=true,%
+texencoding=utf8,%
+bibencoding=utf8,
+refsegment=chapter]{biblatex}
+\IfFileExists{./../Library.bib}{
+
+ \addbibresource{./../Library}
+ 
+}{
+
+  \addbibresource[location=remote]{https://www.dropbox.com/s/r00o9lw76cksxvj/Library.bib?dl=1} 
+
+}
+%\renewcommand*{\bibfont}{\footnotesize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition of environments
+\usepackage{thmtools}
+
+
+
+\declaretheorem[style=plain,qed=$\lrcorner$,numberwithin=chapter]{theorem}
+% Theorem environments
+
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{lemma}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{corollary}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{proposition}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{claim}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{conjecture}
+
+% Remark and definition environments
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{assumption}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{definition}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{remark}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{problem}
+
+\declaretheorem[style=definition,qed=$\lrcorner$,numberwithin=chapter]{question}
+\declaretheorem[style=definition,qed=$\lrcorner$,numbered=no]{answer}
+
+% Example environments
+
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{example}
+
+% Proof environment
+\declaretheoremstyle[
+  spaceabove=6pt, spacebelow=6pt,
+  headfont=\normalfont\slshape,
+  notefont=\normalfont\slshape, notebraces={(}{)},
+  bodyfont=\normalfont,
+  postheadspace=1em,
+  qed=$\blacksquare$
+]{proofstyle}
+\declaretheorem[name=Proof,style=proofstyle,numbered=no]{theproof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom commands
+
+% Prints the month name (e.g., January) and the year (e.g., 2008)
+\newcommand{\monthyear}{%
+  \ifcase\month\or January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or
+  December\fi\space\number\year
+}
+
+\usepackage{ragged2e} % To use the \justify command
+% Prints an epigraph and speaker in sans serif, all-caps type.
+\newcommand{\openepigraph}[2]{%
+  %\sffamily\fontsize{14}{16}\selectfont
+  \begin{fullwidth}
+  \large
+  \begin{doublespace}
+  {\justify#1}\\% epigraph
+  \noindent\hfill{\sffamily#2}% author
+  \end{doublespace}
+  \end{fullwidth}
+}
