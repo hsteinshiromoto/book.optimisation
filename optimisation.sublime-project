@@ -8,7 +8,7 @@
 	"build_systems":
 	[
 		{
-    "cmd": ["xelatex","$file"],
+    "cmd": ["xelatex", "-synctex=1", "-interaction=nonstopmode","$file"],
     "selector": "text.tex.latex"
 		}
 	]
