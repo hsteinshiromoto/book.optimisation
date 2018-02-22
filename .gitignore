@@ -1,6 +1,5 @@
 /.ipynb_checkpoints/
 *.sublime-workspace
-*.ipynb
 *.png
 
 ## Core latex/pdflatex auxiliary files:
