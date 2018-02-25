@@ -1,0 +1,441 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = xelatex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AMS-like packages
+\usepackage{amsmath,amsfonts,amssymb} % AMS fonts and symbols package
+\usepackage{mathrsfs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typeface Settings
+
+\usefonttheme{professionalfonts} %Necessary to use with Euler: This is a beamer setting!
+\usepackage[small,euler-digits,euler-hat-accent]{eulervm} % Load BEFORE mathspec AND fontspec packages
+
+\usepackage{mathspec}
+		%\setmathrm[Mapping=tex-text,Numbers=OldStyle,Scale=MatchLowercase]{Palatino Linotype}
+
+	\usepackage{fontspec}
+		\defaultfontfeatures{Mapping=tex-text,Ligatures={TeX,Common},Scale=MatchUppercase,Color=textcolor}
+
+		\setromanfont[
+            Path = fonts/,
+            Extension      = .ttf,
+            UprightFont    = *,
+            BoldFont       = *-Bold,
+            ItalicFont     = *-Oblique,
+            BoldItalicFont = *-BoldOblique]
+			{Adobe_Garamond_Pro}
+		
+		\setsansfont[
+          Extension      = .otf,
+          UprightFont    = *-regular,
+          BoldFont       = *-bold,
+          ItalicFont     = *-italic,
+          BoldItalicFont = *-bolditalic]
+					{texgyreheros}
+		\setsansfont[
+					Extension 	   = .otf,
+					UprightFont	   = *-regular,
+					BoldFont	   = *-bold,
+					ItalicFont	   = *-italic,
+					BoldItalicFont = *-bolditalic]
+					{texgyreheros}
+		% Do not add "Numbers=OldStyle" for the options of the fonts below
+		\setmonofont[
+           Path = fonts/,
+           Extension      = .ttf,
+           UprightFont 	= *-Regular,
+           BoldFont   	= *-Bold]
+					{Inconsolata}
+		
+		% \newfontfamily\thinfont[Numbers=OldStyle,ItalicFont=FuturaLT-LightOblique.ttf]{FuturaLT-Light.ttf}
+
+		% \newfontfamily{\normal}[Mapping=tex-text,Scale=MatchLowercase]{Futura LT Medium}
+		% \newfontfamily{\light}[Mapping=tex-text,Scale=MatchLowercase]{Futura LT Light}
+		
+% Definition of the \newhtought, \allcaps, \smallcaps and \textsc
+
+\usepackage{textcase}
+
+\newskip\tufteskipamount
+\tufteskipamount=1.0\baselineskip plus 0.5ex minus 0.2ex
+
+\newcommand{\tuftebreak}{\par\ifdim\lastskip<\tufteskipamount
+  \removelastskip\penalty-100\tufteskip\fi}
+
+\newcommand{\tufteskip}{\vspace\tufteskipamount}
+
+\def\smallcapsspacing{\@tufte@warning{Proper spacing of small-caps letters has not been set up.}}
+
+\DeclareTextFontCommand{\textsmallcaps}{\scshape}
+\def\allcapsspacing{\@tufte@warning{Proper spacing of ALL-CAPS letters has not been set up.}}
+\def\smallcapsspacing{\@tufte@warning{Proper spacing of small-caps letters has not been set up.}}
+\newcommand{\allcaps}[1]{\allcapsspacing{\MakeTextUppercase{#1}}}
+\newcommand{\smallcaps}[1]{\smallcapsspacing{\MakeTextLowercase{#1}}}
+
+\newcommand{\textls}[2][5]{%
+    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
+  }
+  
+  \providecommand\newthought[1]{%
+   \tuftebreak
+   \noindent\textsc{#1}%
+}
+\renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+ \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+ \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+ \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+ \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+
+% End of the definition of the \newthought command ---------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Language Settings
+
+% Needs to be loaded locally and after the fontspec package
+
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=british]{english}
+\setotherlanguages{french,portuges,italian}
+
+\usepackage{csquotes}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphic settings
+
+
+\usepackage{graphicx,xcolor,epstopdf}
+\usepackage{color}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+% Color definitions
+\definecolor{canary}{HTML}{FCF0AD}
+
+\definecolor{gindigo}{HTML}{2196F3}
+
+
+%Blue
+
+\definecolor{gblue500}{HTML}{2196F3}
+\definecolor{gblue50}{HTML}{E3F2FD}
+\definecolor{gblue100}{HTML}{BBDEFB}
+\definecolor{gblue200}{HTML}{90CAF9}
+\definecolor{gblue300}{HTML}{64B5F6}
+\definecolor{gblue400}{HTML}{42A5F5}
+\definecolor{gblue600}{HTML}{1E88E5}
+\definecolor{gblue700}{HTML}{1976D2}
+\definecolor{gblue800}{HTML}{1565C0}
+\definecolor{gbluetext}{HTML}{1565C0}
+\definecolor{gblue900}{HTML}{0D47A1}
+
+%Green
+
+
+\definecolor{ggreen500}{HTML}{4CAF50}
+\definecolor{ggreen50}{HTML}{E8F5E9}
+\definecolor{ggreen100}{HTML}{C8E6C9}
+\definecolor{ggreen200}{HTML}{A5D6A7}
+\definecolor{ggreen300}{HTML}{81C784}
+\definecolor{ggreen400}{HTML}{66BB6A}
+\definecolor{ggreen500}{HTML}{4CAF50}
+\definecolor{ggreen600}{HTML}{43A047}
+\definecolor{ggreen700}{HTML}{388E3C}
+\definecolor{ggreen800}{HTML}{2E7D32}
+\definecolor{ggreen900}{HTML}{1B5E20}
+
+%Red
+
+
+\definecolor{ggrey500}{HTML}{9E9E9E}
+\definecolor{ggrey50}{HTML}{FAFAFA}
+\definecolor{ggrey100}{HTML}{F5F5F5}
+\definecolor{ggrey200}{HTML}{EEEEEE}
+\definecolor{ggrey300}{HTML}{E0E0E0}
+\definecolor{ggrey400}{HTML}{BDBDBD}
+\definecolor{ggrey500}{HTML}{9E9E9E}
+\definecolor{ggrey600}{HTML}{757575}
+\definecolor{ggrey700}{HTML}{616161}
+\definecolor{ggrey800}{HTML}{424242}
+\definecolor{ggrey900}{HTML}{212121}
+
+%Grey
+
+
+\definecolor{gred500}{HTML}{F44336}
+\definecolor{gred50}{HTML}{FFEBEE}
+\definecolor{gred100}{HTML}{FFCDD2}
+\definecolor{gred200}{HTML}{EF9A9A}
+\definecolor{gred300}{HTML}{E57373}
+\definecolor{gred400}{HTML}{EF5350}
+\definecolor{gred500}{HTML}{F44336}
+\definecolor{gred600}{HTML}{E53935}
+\definecolor{gred700}{HTML}{D32F2F}
+\definecolor{gred800}{HTML}{C62828}
+\definecolor{gredtext}{HTML}{C62828}
+\definecolor{gred900}{HTML}{B71C1C}
+
+%Yellow
+
+\definecolor{gyellow500}{HTML}{FFEB3B}
+\definecolor{gyellow50}{HTML}{FFFDE7}
+\definecolor{gyellow100}{HTML}{FFF9C4}
+\definecolor{gyellow200}{HTML}{FFF59D}
+\definecolor{gyellow300}{HTML}{FFF176}
+\definecolor{gyellow400}{HTML}{FFEE58}
+\definecolor{gyellow600}{HTML}{FDD835}
+\definecolor{gyellow700}{HTML}{FBC02D}
+\definecolor{gyellow800}{HTML}{F9A825}
+\definecolor{gyellow900}{HTML}{F57F17}
+
+% Orange
+
+\definecolor{gorange500}{HTML}{FF9800}
+
+% Postit color
+
+\definecolor{postitcolor}{HTML}{FCF0AD}
+
+\usepackage{pdfrender}
+\usepackage[beamer]{hf-tikz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,shadings}
+\usetikzlibrary{calc}
+
+\usepackage{multimedia,animate, colortbl}
+
+\usepackage{tcolorbox} 
+\tcbuselibrary{skins,theorems}
+\usepackage{varwidth} % To change blocks width
+
+%%%%%%%%%%%%%%%%%%
+% OTHER PACKAGES %
+%%%%%%%%%%%%%%%%%%
+
+% Separates counting from actual presentation from appendix
+\usepackage{appendixnumberbeamer}
+
+% Reduce left margin
+\usepackage{changepage}
+
+% Conditional package
+\usepackage{ifthen,forloop}
+
+\usepackage{multicol}
+\setlength{\columnseprule}{0.4pt}
+
+% Bla bla bla generator
+\usepackage{blindtext}
+
+%%%%%%%%%%%%%%
+% Water mark %
+%%%%%%%%%%%%%%
+
+% different for odd and even pages
+%\usepackage{draftwatermark}
+%
+%\makeatletter
+%\renewcommand\sc@wm@print[1]{% redefine positioning of mark (-1in to 330pt)
+% \if@sc@wm@stamp
+%          \setbox\@tempboxa\vbox to \z@{%
+%          \ifodd\c@page
+%            \vskip 2em  \moveright 8em
+%           \else
+%            \vskip 2em  \moveright 12.5em
+%           \fi \vbox{%
+%              \hbox to \z@{%
+%                #1\hss}}\vss}
+%          \dp\@tempboxa\z@
+%          \box\@tempboxa
+%          \fi}
+%\makeatother
+%
+%\makeatletter
+%\SetWatermarkText{%
+%    \ifodd\c@page
+%        \begin{tikzpicture}\node[opacity=.1]		{\includegraphics[angle=315,scale=0.0625]{./imgs/MIT}};				\end{tikzpicture}
+%    \else
+%    	\begin{tikzpicture}\node[opacity=.1]		{\includegraphics[angle=315,scale=1]{./imgs/Usyd_new_logo}};
+%   		\end{tikzpicture}
+%    \fi
+%}
+%\makeatother
+%
+%\setbeamertemplate{background canvas}{}
+
+%%%%%%%%%%%%%%%%%%%%
+% HYPERREF PACKAGE %
+%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}% backref linktocpage pagebackref
+
+\hypersetup{
+% Uncomment the line below to remove all links (to references, figures, tables, etc)
+%draft, 
+colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,
+% Uncomment the line below if you want to have black links (e.g. for printing black and white)
+colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=1, pdfstartview=FitV, 
+%
+% PDF file meta-information
+%
+pdftitle={},
+pdfauthor={Humberto Stein Shiromoto},
+pdfsubject={},
+pdfkeywords={},
+pdfcreator={pdfLaTeX},
+pdfproducer={}
+}
+
+\setbeamercolor{bibliography entry author}{fg=ggreentext}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=gredtext}
+\setbeamercolor{bibliography entry Publisher
+}{fg=gredtext}
+\setbeamercolor{bibliography entry note
+}{fg=black}
+\setbeamercolor{bibliography item}{fg=gblue700}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEAMER ITEMIZE AND ENUMERATE STYLES %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage{enumerate} %No need to be loaded with Beamer
+
+\setbeamertemplate{itemize item}[square]
+\setbeamercolor{itemize item}{fg=gblue700}
+
+ % if you want a circle
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamercolor{itemize subitem}{fg=gblue700}
+
+\setbeamertemplate{enumerate item}[square]
+\setbeamercolor{enumerate item}{fg=gblue700,bg=gblue700}
+
+\setbeamercolor{local structure}{fg=gblue700}
+
+\usepackage{verbatim}
+
+
+% Removes shadow from title page box
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+
+%%%%%%%%%%%%%%
+% Frametitle %
+%%%%%%%%%%%%%%
+
+% Removes shadow from frametitle
+\setbeamertemplate{frametitle}[default][colsep=-4bp,rounded=false,shadow=false]
+
+
+\setbeamercolor{frametitle}{fg=white,bg=gblue700}
+
+
+%%%%%%%%%%%%
+% Headline %
+%%%%%%%%%%%%
+%\setbeamerfont{headline}{series=\bfseries}
+\setbeamercolor{section in head/foot}{fg=white, bg=black}
+\setbeamercolor{upper separation line head}{bg=white}
+\setbeamertemplate{section in head/foot shaded}{\color{white!50!black}\insertsectionhead}
+
+\makeatletter
+\setbeamertemplate{headline}
+{%
+  \pgfuseshading{beamer@barshade}%
+  \ifbeamer@sb@subsection%
+    \vskip-9.75ex%
+  \else%
+    \vskip-7ex%
+  \fi%
+  \begin{beamercolorbox}[ignorebg,ht=2.25ex,dp=3.75ex]{section in head/foot}
+    \insertnavigation{\paperwidth}
+  \end{beamercolorbox}%
+  \ifbeamer@sb@subsection%
+    \begin{beamercolorbox}[ignorebg,ht=2.125ex,dp=1.125ex,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+      \usebeamerfont{subsection in head/foot}\insertsubsectionhead
+    \end{beamercolorbox}%
+  \fi%
+ \begin{beamercolorbox}[colsep=1.5pt,ht=0.75ex]{upper separation line head}
+ \end{beamercolorbox}
+}%
+\makeatother
+
+
+%%%%%%%%%%%%
+% Footline %
+%%%%%%%%%%%%
+%\setbeamertemplate{footline}[frame number]
+\setbeamercolor{footline}{fg=white,bg=black}
+
+\makeatletter
+\defbeamertemplate*{footline}{my footline}
+{
+   \ifnum \insertpagenumber=1
+      \leavevmode%
+      \hbox{%
+      \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+        % empty environment to raise height
+      \end{beamercolorbox}}%
+      \vskip0pt%
+    \else
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{footline}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{footline}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hfill(\insertframenumber{} / \inserttotalframenumber)
+  \end{beamercolorbox}
+  }%
+  \vskip0pt%
+  \fi
+}
+\makeatother
+
+
+\setbeamertemplate{footline}[my footline]
+
+%%%%%%%%%%%%%%%%%%%%%
+% SECTION-TITLEPAGE %
+%%%%%%%%%%%%%%%%%%%%%
+
+\AtBeginSection[]{%
+    {
+    \setbeamercolor{upper separation line head}{bg=gblue700}
+    \begin{frame}
+    \begin{tikzpicture}[remember picture,overlay]
+    \fill[gblue700]
+        ([yshift=0pt]current page.west) rectangle ([yshift=-\headheight] current page.north east);
+    \node[anchor=center]
+        at ([yshift=10pt,xshift=0pt]current page.center) 
+        {\parbox[t]{\textwidth}{\centering%
+            \usebeamerfont{author}\textcolor{white}{%
+                    \textpdfrender{
+                        TextRenderingMode=FillStroke,
+                        FillColor=white,
+                        LineWidth=.1ex,
+                    }{\insertsection}}}};
+    \end{tikzpicture}
+    \end{frame}}
+    \addtocounter{framenumber}{-1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS %
+%%%%%%%%%%%%%%%%%%%%%
+
+%Changing numbering in TOC
+%\setbeamertemplate{sections/subsections in toc}[square]
+%\setbeamertemplate{section in toc}{\inserttocsection}
+%\setbeamerfont{section in toc}{series=\bfseries}
+%
+%% TOC must be loaded before \begin{document}
+%\AtBeginSection[]{
+%	\begin{frame}<beamer>
+%		%\frametitle{Overview}
+%		\tableofcontents[currentsection,hideallsubsections,subsubsectionstyle=hide]
+%	\end{frame}
+%	\addtocounter{framenumber}{-1} 
+%}
+
