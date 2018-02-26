@@ -173,14 +173,79 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\maketitle	
 	}	}
 	
-	\section[Text, items, equations, and figures]{Tests with text, items, equations, and figures}	
-	\subsection[First subsection]{Text and Equations}	
+	\section[Introduction]{Introduction}	
+	\subsection[Motivation]{Motivation}	
 	\frame[c]{
-		\frametitle{The first frame: text}
+		\frametitle{Problem Formulation}
 		\begin{adjustwidth}{-2em}{-2em}
-		\blindtext
+		Let $D\subset\mathbb{R}^n$ be an open set, and $f\in\mathcal{C}^1(\mathbb{R}^n,\mathbb{R})$
+
+		\begin{equation*}
+			\min_{x\in D} f(x)
+		\end{equation*}
+
+		\begin{tcolorbox}[title=A Necessary Condition]
+		The point $x^\ast\in D$ is a solution to the optimisation problem if
+		\begin{equation*}
+			\nabla f(x^\ast)=0\;.
+		\end{equation*}
+		\end{tcolorbox}
+
 		\end{adjustwidth}
 	}
+
+	\section[Gradient Descent]{Gradient Descent}
+	\frame[c]{
+		\frametitle{Gradient Descent: Hypothesis}
+		\begin{tcolorbox}[title=Assumption on $f$]
+		\begin{itemize}
+			\item For every $c\in\mathbb{R}_{>0}$, the set
+			\[\{x\in\mathbb{R}:f(x)\leq c\}\]
+			is closed;
+
+			\item $\inf_{x\in D}f(x)>-\infty$
+		\end{itemize}
+		\end{tcolorbox}
+	}
+
+	\frame[c]{
+		\frametitle{Gradient Descent: Algorithm}
+		\begin{tcolorbox}
+			\begin{enumerate}
+				\item Let $k=0$, $\alpha>0$ be the \emph{stepsize}, and $x_0\in D$ be an initial point
+
+				\item Compute
+				\[x_{k+1}=x_k + \alpha\nabla f(x_k)\]
+			\end{enumerate}
+		\end{tcolorbox}
+
+		\begin{tcolorbox}[title=Theorem]
+				Let $L$ be the Lipschitz constant of $\nabla f$ and $\alpha\leq 1/L$, then for every $k\in\mathbb{N}_{>0}$
+				\[|f(x_k)-f(x^\ast)|=\dfrac{|x_0-x^\ast|^2}{2\alpha k}\;.\]
+		\end{tcolorbox}
+
+		Consequence: let $\varepsilon>0$ be the error tolerance the minimum number of iterations $n$ is $O(1/\varepsilon)$
+
+	}
+
+	\frame[c]{
+		% ref: http://users.ece.utexas.edu/~cmcaram/EE381V_2012F/Lecture_4_Scribe_Notes.final.pdf
+		\begin{tcolorbox}[title=Lemma]
+				If $f$ be Lipschitz on $D$ with constant $L$, then for every $x,y\in D$,
+				 \[|f(x)-f(y)-\nabla f(x)\cdot(y-x)|\leq\dfrac{L}{2}|x-y|^2\]
+		\end{tcolorbox}
+
+		\begin{itemize}
+			\item Let $x_{k+1}=x_k-\alpha \nabla f(x_k)$. From the previous lemma, 
+			\begin{align*}
+			f(x_{k+1})\leq&\ f(x_k) + \nabla f(x_k)(x_{k+1}-x_k)+\dfrac{L}{2}|x_{k+1}-x_k|^2\\
+			=&\ f(x_k)- \alpha\left(1-\dfrac{\alpha}{2}L\right)|\nabla f(x_k)|^2
+			\end{align*}
+
+			\item Consequently 
+			\[|\nabla f(x_k)|^2\leq \dfrac{1}{\alpha\left(1-\dfrac{\alpha}{2}L\right)}(f(x_k)-f(x_{k+1})\]
+
+
 
 	\frame[c]{
 		\frametitle{The First Frame: equation}
