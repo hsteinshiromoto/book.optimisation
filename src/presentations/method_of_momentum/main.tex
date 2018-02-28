@@ -175,10 +175,11 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	
 	\section[Introduction]{Introduction}	
 	\subsection[Motivation]{Motivation}	
+
 	\frame[c]{
 		\frametitle{Problem Formulation}
 		\begin{adjustwidth}{-2em}{-2em}
-		Let $D\subset\mathbb{R}^n$ be an open set, and $f\in\mathcal{C}^1(\mathbb{R}^n,\mathbb{R})$
+		Let $D\subset\mathbb{R}^n$ be an open set, and $f\in\mathcal{C}^2(D,\mathbb{R})$
 
 		\begin{equation*}
 			\min_{x\in D} f(x)
@@ -194,9 +195,9 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\end{adjustwidth}
 	}
 
-	\section[Gradient Descent]{Gradient Descent}
+	\subsection[Background]{Background}
 	\frame[c]{
-		\frametitle{Gradient Descent: Hypothesis}
+		\frametitle{Hypothesis}
 		\begin{tcolorbox}[title=Assumption on $f$]
 		\begin{itemize}
 			\item For every $c\in\mathbb{R}_{>0}$, the set
@@ -207,20 +208,44 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\end{itemize}
 		\end{tcolorbox}
 	}
+	% Ref. Boyd, Vanderberghe, Convex optm
+	\frame[c]{
+		\frametitle{Strong convexity: Definition and Property}
+
+		\begin{itemize}
+			\item Definition: The function $f$ is said to be \emph{strong convex} if 
+		\[\exists\underline{m}>0, H(\cdot)\succeq mI\;,\]
+ 		where $H$ is the Hessian of $f$.
+
+ 			\item Property\footnote{Borwen and Vanderweff, ``Convex Functions - Constructions, Characterizations and Counterexamples'', CUP, 2010, Ch. 5}
+ 		\[f(y)\geq f(x)+\nabla f(x)\cdot(y-x)+\dfrac{\underline{m}}{2}|y-x|_2^2\]
+ 		\end{itemize}
+
+% 		\[H(x)=\nabla^2 f(x)=\begin{bmatrix}
+% \dfrac{\partial^2f_1}{\partial x_1^2}&\dfrac{\partial^2f_1}{\partial x_1\partial x_2}&\cdots&\dfrac{\partial^2f_1}{\partial x_1\partial x_n}\\
+% \dfrac{\partial^2f_2}{\partial x_2\partial x_1}&\dfrac{\partial^2f_2}{\partial x_2^2}&\cdots&\dfrac{\partial^2f_2}{\partial x_2\partial x_n}\\
+% \vdots&\vdots&\ddots&\vdots\\
+% \dfrac{\partial^2f_n}{\partial x_n\partial x_1}&\dfrac{\partial^2f_n}{\partial x_n\partial x_2}&\cdots&\dfrac{\partial^2f_n}{\partial x_n^2}
+% \end{bmatrix}(x)\]
+	}
+
+	\section[Gradient Descent]{Gradient Descent}
 
 	\frame[c]{
 		\frametitle{Gradient Descent: Algorithm}
 		\begin{tcolorbox}
 			\begin{enumerate}
-				\item Let $k=0$, $\alpha>0$ be the \emph{stepsize}, and $x_0\in D$ be an initial point
+				\item Let $k=0$, $\alpha>0$ be the \emph{stepsize}, $\varepsilon_x$, $\varepsilon_f$ be the \emph{tolerances} and $x_0\in D$ be an initial point
 
 				\item Compute
 				\[x_{k+1}=x_k - \alpha\nabla f(x_k)\]
+
+				\item If $|x_k - x^\ast|\leq\varepsilon_x$ and/or $|f(x_k) - f(x^\ast)|\leq\varepsilon_f$, stop. Else, go to 2.
 			\end{enumerate}
 		\end{tcolorbox}
-
+		Think about this
 		\begin{tcolorbox}[title=Theorem]
-				Let $L$ be the Lipschitz constant of $\nabla f$ and $\alpha< \tfrac{2}{L}$. If $f$ is convex, then for every $k\in\mathbb{N}_{>0}$
+				Let $L$ be the Lipschitz constant of $\nabla f$ and $\alpha< \tfrac{2}{L}$, then,
 				\[|f(x_k)-f(x^\ast)|=\dfrac{|x_0-x^\ast|^2}{2\alpha k}\;.\]
 		\end{tcolorbox}
 
@@ -229,6 +254,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	}
 
 	\frame[c]{
+		Think about this
 		% ref: http://users.ece.utexas.edu/~cmcaram/EE381V_2012F/Lecture_4_Scribe_Notes.final.pdf
 		\begin{tcolorbox}[title=Lemma]
 				If $f$ be Lipschitzian and convex on $D$ with constant $L$, then for every $x,y\in D$,
