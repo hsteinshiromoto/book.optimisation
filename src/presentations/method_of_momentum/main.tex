@@ -229,7 +229,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 % \end{bmatrix}(x)\]
 	}
 
-	\section[Gradient Descent]{Gradient Descent}
+	\subsection[Gradient Descent]{Gradient Descent}
 
 	\frame[c]{
 		\frametitle{Gradient Descent: Algorithm}
@@ -296,12 +296,59 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	}
 
 
+	\section[Method of Momentum]{Method of Momentum}
+	\subsection{Introduction}
+	\frame[c]{
+		\frametitle{A}
+		Add a memory term to the gradient descent algorithm
+		\begin{equation*}
+			\left\{\begin{array}{rcl}
+			z^+&=&\beta z+\nabla f(x)\\
+			x^+&=&x-\alpha z^+\;.
+			\end{array}
+			\right.
+		\end{equation*}
+	}
 
 	\frame[c]{
-		\frametitle{The First Frame: equation}
+		\frametitle{Dynamics of momentum}
 		\begin{adjustwidth}{-2em}{-2em}
-		% \blindmathpaper % Gives errors!
-		\end{adjustwidth}
+		Let
+		\[f(x)=\dfrac{1}{2}x^\top Ax-b^\top x\,\]
+		where $A$ is symmetric and invertible.
+
+		\begin{equation*}
+			\left\{\begin{array}{rcl}
+			z^+&=&\beta z+(Ax-b)\\
+			x^+&=&x-\alpha z^+\;.
+			\end{array}
+			\right.
+		\end{equation*}
+
+		Let $Q$ be such that $A=Q\Lambda Q^\top$. 
+		Changing coordinates, $w=Q(x-x^\ast)$ and $y=Qz$
+		\begin{equation*}
+			\left\{\begin{array}{rcl}
+			y_i^+&=&\beta y_i+\lambda_i w_i\\
+			w_i^+&=&-\alpha \beta y_i+(1-\alpha\lambda_i)w_i\;.
+			\end{array}
+			\right.
+		\end{equation*}
+
+		This equation can be written as $v^+=Rv$.
+	\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Linear Difference Systems}
+	\begin{adjustwidth}{-2em}{-2em}
+		The convergence depends on the solutions to the system $v^+=Rv$
+
+		The analysis of the matrix $R$ provides the behaviour of the 
+		convergence of the method
+
+
+	\end{adjustwidth}
 	}
 
 	\subsection{Items and lists}
