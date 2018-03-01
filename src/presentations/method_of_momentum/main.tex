@@ -214,7 +214,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 		\begin{itemize}
 			\item Definition: The function $f$ is said to be \emph{strong convex} if 
-		\[\exists\underline{m}>0, H(\cdot)\succeq mI\;,\]
+		\[\exists\underline{m}>0, H(\cdot)\succeq \underline{m}I\;,\]
  		where $H$ is the Hessian of $f$.
 
  			\item Property\footnote{Borwen and Vanderweff, ``Convex Functions - Constructions, Characterizations and Counterexamples'', CUP, 2010, Ch. 5}
@@ -349,8 +349,26 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 		A solution to $v^+=Rv$, starting from an \emph{initial condition}
 		$v_0$, is function $V:\mathbb{R}_{\geq0}\to\mathbb{R}^n$ defined as
-		$V(k,v)$
+		$V(k,v)$. 
 	\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Equilibrium and stability}
+
+		A point $\nu$ is said to be an \emph{equilibrium point}
+		to $v^+=Rv$ if $R\nu=\nu$
+
+		The equilibrium $\nu$ is said to be (Lyapunov) \emph{stable}
+		if
+		\[\forall\varepsilon>0, \forall v, \exists\delta>0:|v-\nu|<\delta\Rightarrow
+		|V(k,v)-V(k,\nu)|<\varepsilon, \forall k\in\mathbb{N}\]
+
+		The equilibrium $\nu$ is said to be \emph{attractive} if
+		\[\exists\delta>0, \forall |v-\nu|<\delta, \lim_{k\to\infty} V(k,v)\to \nu\]
+
+		The equilibrium $\nu$ is said to be \emph{asymptotically stable}
+		if it is stable and attractive.
 	}
 
 	\subsection{Items and lists}
