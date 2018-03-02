@@ -406,9 +406,10 @@ pdfproducer={}
     \begin{frame}
     \begin{tikzpicture}[remember picture,overlay]
     \fill[gblue700]
-        ([yshift=0pt]current page.west) rectangle ([yshift=-\headheight] current page.north east);
+        ([yshift=0pt]current page.west) rectangle ([yshift=-\headheight]
+        current page.north east);
     \node[anchor=center]
-        at ([yshift=10pt,xshift=0pt]current page.center) 
+        at ([yshift=50pt,xshift=0pt]current page.center) 
         {\parbox[t]{\textwidth}{\centering%
             \usebeamerfont{author}\textcolor{white}{%
                     \textpdfrender{
@@ -416,6 +417,15 @@ pdfproducer={}
                         FillColor=white,
                         LineWidth=.1ex,
                     }{\insertsection}}}};
+    \node[anchor=south]
+        at ([yshift=50pt,xshift=0.3\linewidth] current page.south)
+        {\parbox[t]{\textwidth}{\centering%
+             \usebeamerfont{author}\tableofcontents
+      [
+        currentsection,
+        sectionstyle=hide/hide,
+        subsectionstyle=show/show/hide
+        ]}};
     \end{tikzpicture}
     \end{frame}}
     \addtocounter{framenumber}{-1}
@@ -424,6 +434,9 @@ pdfproducer={}
 %%%%%%%%%%%%%%%%%%%%%
 % TABLE OF CONTENTS %
 %%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{subsection in toc}{fg=gblue700}
 
 %Changing numbering in TOC
 %\setbeamertemplate{sections/subsections in toc}[square]
