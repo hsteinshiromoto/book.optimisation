@@ -229,8 +229,9 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 % \end{bmatrix}(x)\]
 	}
 
-	\subsection[Gradient Descent]{Gradient Descent}
+	\section[Gradient Descent]{Gradient Descent}
 
+	% Use slides from http://www.seas.ucla.edu/~vandenbe/236C/lectures/gradient.pdf
 	\frame[c]{
 		\frametitle{Gradient Descent: Algorithm}
 		\begin{tcolorbox}
@@ -311,11 +312,11 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	}
 
 	\frame[c]{
-		\frametitle{Dynamics of momentum}
+		\frametitle{Dynamics of momentum: Formulation (1/2)}
 		\begin{adjustwidth}{-2em}{-2em}
 		Let
 		\[f(x)=\dfrac{1}{2}x^\top Ax-b^\top x\,\]
-		where $A$ is symmetric and invertible.
+		where $A$ is symmetric, positive semi definite and nonsingular.
 
 		\begin{equation*}
 			\left\{\begin{array}{rcl}
@@ -324,23 +325,38 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 			\end{array}
 			\right.
 		\end{equation*}
+		\end{adjustwidth}
 
-		Let $Q$ be such that $A=Q\Lambda Q^\top$. 
-		Changing coordinates, $w=Q(x-x^\ast)$ and $y=Qz$
-		\begin{equation*}
+	}
+	\frame[c]{
+		\frametitle{Dynamics of momentum: Formulation (2/2)}
+		\begin{adjustwidth}{-2em}{-2em}
+		
+		Let $Q$ be such that $A=Q\Lambda Q^\top$.
+
+		\begin{itemize} 
+			\item Coordinate change
+			\[w=Q(x-x^\ast)\quad\text{and}\quad y=Qz\]
+
+			\item For each $i\in\mathbb{N}_{[1, n]}$,
+			\begin{equation*}
 			\left\{\begin{array}{rcl}
 			y_i^+&=&\beta y_i+\lambda_i w_i\\
-			w_i^+&=&-\alpha \beta y_i+(1-\alpha\lambda_i)w_i\;.
+			w_i^+&=&-\alpha \beta y_i+(1-\alpha\lambda_i)w_i
 			\end{array}
 			\right.
 		\end{equation*}
+		This equation can be written as $v_i^+=R_iv_i$
 
-		This equation can be written as $v^+=Rv$.
+		\item Let $v=(v_1,\ldots,v_n)$ and $R=\mathtt{blkdiag}(R_1,\ldots,R_n)$,
+		\[v^+=Rv\]
+		\end{itemize}
+
 	\end{adjustwidth}
 	}
 
 	\frame[c]{
-		\frametitle{Linear Difference Systems}
+		\frametitle{Dynamics of momentum: Linear Difference Systems}
 	\begin{adjustwidth}{-2em}{-2em}
 		The convergence depends on the solutions to the system $v^+=Rv$
 
@@ -354,21 +370,34 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	}
 
 	\frame[c]{
-		\frametitle{Equilibrium and stability}
-
-		A point $\nu$ is said to be an \emph{equilibrium point}
+		\frametitle{Dynamics of momentum: Linear Difference Systems}
+		\begin{adjustwidth}{-2em}{-2em}
+		Equilibrium and stability
+		\begin{itemize}
+		\item A point $\nu$ is said to be an \emph{equilibrium point}
 		to $v^+=Rv$ if $R\nu=\nu$
 
-		The equilibrium $\nu$ is said to be (Lyapunov) \emph{stable}
+		\item  The equilibrium $\nu$ is said to be (Lyapunov) \emph{stable}
 		if
 		\[\forall\varepsilon>0, \forall v, \exists\delta>0:|v-\nu|<\delta\Rightarrow
 		|V(k,v)-V(k,\nu)|<\varepsilon, \forall k\in\mathbb{N}\]
 
-		The equilibrium $\nu$ is said to be \emph{attractive} if
+		\item The equilibrium $\nu$ is said to be \emph{attractive} if
 		\[\exists\delta>0, \forall |v-\nu|<\delta, \lim_{k\to\infty} V(k,v)\to \nu\]
 
-		The equilibrium $\nu$ is said to be \emph{asymptotically stable}
+		\item The equilibrium $\nu$ is said to be \emph{asymptotically stable}
 		if it is stable and attractive.
+		\end{itemize}
+		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Dynamics of Momentum: Types of Responses}
+		\begin{adjustwidth}{-2em}{-2em}
+		\begin{figure}[htpb!]
+			\includegraphics[width=\linewidth]{imgs/2nd_order_responses.png}
+		\end{figure}
+		\end{adjustwidth}
 	}
 
 	\subsection{Items and lists}
