@@ -206,6 +206,37 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	}
 
 	\subsection[Background]{Background}
+
+	\frame[c]{
+		\begin{adjustwidth}{-2em}{-2em}
+			\begin{tcolorbox}[title=Definition: convex function]
+				The function $f\in\mathcal{C}^2(D,\mathbb{R})$ is \emph{convex} 
+				if the set $D$ is convex and, for every $x_1,x_2\in D$, the 
+				inequalities
+				\[(\nabla f(x)-\nabla f(y))\cdot(x-y)\geq0\]
+				and
+				\[f(t x_1+(1-t)x_2)\leq tf(x_1)+(1-t)f(x_2)\]
+				hold, for every $t\in[0, 1]$
+			\end{tcolorbox}
+		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\begin{adjustwidth}{-2em}{-2em}
+		The gradient of $f$ is said to be \emph{Lipschitz continuous} if there 
+		exits $L>0$ such that the inequality
+		\[||\nabla f(x)-\nabla f(y)||_2\leq L||x-y||_2\]
+		holds, for every $x,y\in D$
+
+		\begin{tcolorbox}[title=Approximation bound]
+			If $x^\ast\in D$ is a solution to the optimisation problem and 
+			$D=\mathbb{R}^n$, then
+			\[\dfrac{1}{2L}||\nabla f(x)||_2^2\leq f(x)-f(x^\ast)\leq
+			\dfrac{L}{2}||x-x^\ast||_2^2\]
+		\end{tcolorbox}
+		\end{adjustwidth}
+	}
+
 	\frame[c]{
 		\frametitle{Hypothesis}
 		\begin{tcolorbox}[title=Assumption on $f$]
@@ -244,16 +275,34 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	% Use slides from http://www.seas.ucla.edu/~vandenbe/236C/lectures/gradient.pdf
 	\frame[c]{
 		\frametitle{Gradient Descent: Algorithm}
+		\begin{adjustwidth}{-2em}{-2em}
 		\begin{tcolorbox}
 			\begin{enumerate}
-				\item Let $k=0$, $\alpha>0$ be the \emph{stepsize}, $\varepsilon_x$, $\varepsilon_f$ be the \emph{tolerances} and $x_0\in D$ be an initial point
+				\item Definitions:
 
-				\item Compute
-				\[x_{k+1}=x_k - \alpha\nabla f(x_k)\]
+					Let $k=0$, $\alpha>0$ be the \emph{stepsize}, 
+					$\varepsilon_x$, $\varepsilon_f$ be the \emph{tolerances} 
+					and $x(0)=x_0\in D$ be an initial point
 
-				\item If $|x_k - x^\ast|\leq\varepsilon_x$ and/or $|f(x_k) - f(x^\ast)|\leq\varepsilon_f$, stop. Else, go to 2.
+				\item Computation:
+				\[x(k+1)=x(k) - \alpha\nabla f(x(k))\]
+
+				\item Stop condition:
+
+				If $|x(k) - x^\ast|\leq\varepsilon_x$ and/or $|f(x(k)) - f(x^\ast)|\leq\varepsilon_f$, stop. Else, go to 2.
 			\end{enumerate}
 		\end{tcolorbox}
+		\end{adjustwidth}
+
+		Advantages:
+		\begin{itemize}
+			\item Every iteration is inexpensive
+
+			\item Does not require second-order derivatives
+		\end{itemize}
+
+	}
+	\frame[c]{
 		Think about this
 		\begin{tcolorbox}[title=Theorem]
 				Let $L$ be the Lipschitz constant of $\nabla f$ and $\alpha< \tfrac{2}{L}$, then,
@@ -399,8 +448,17 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		if it is stable and attractive.
 		\end{itemize}
 
-		Asymptotically stable if eigenvalues of $R$ satisfy $\max\{|\sigma_1|, |\sigma_2|\} <1$
+		
 		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Dynamics of Momentum: Implications for $\alpha$ and $\beta$}
+		Asymptotically stable if eigenvalues of $R$ satisfy $\max\{|\sigma_1|, 
+		|\sigma_2|\} <1$
+
+		Consequently, $\alpha$ and $\beta$ must satisfy the inequalities
+		\[0<\alpha\lambda_i<2(1+\beta)\quad\text{and}\quad 0\leq\beta <1\]
 	}
 
 	\frame[c]{
