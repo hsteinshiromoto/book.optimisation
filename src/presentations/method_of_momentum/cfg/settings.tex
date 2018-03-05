@@ -335,7 +335,7 @@ pdfproducer={}
 %%%%%%%%%%%%
 %\setbeamerfont{headline}{series=\bfseries}
 \setbeamercolor{section in head/foot}{fg=white, bg=black}
-\setbeamercolor{upper separation line head}{bg=white}
+% \setbeamercolor{upper separation line head}{bg=white}
 \setbeamertemplate{section in head/foot shaded}{\color{white!50!black}\insertsectionhead}
 
 \makeatletter
@@ -356,8 +356,8 @@ pdfproducer={}
       \usebeamerfont{subsection in head/foot}\insertsubsectionhead
     \end{beamercolorbox}%
   \fi%
- \begin{beamercolorbox}[colsep=1.5pt,ht=0.75ex]{upper separation line head}
- \end{beamercolorbox}
+ % \begin{beamercolorbox}[colsep=1.5pt,ht=0.75ex]{upper separation line head}
+ % \end{beamercolorbox}
 }%
 \makeatother
 
@@ -418,16 +418,28 @@ pdfproducer={}
                         LineWidth=.1ex,
                     }{\insertsection}}}};
     \node[anchor=south]
-        at ([yshift=50pt,xshift=0.3\linewidth]current page.south)
-        {\parbox[t]{\textwidth}{\centering%
-             \usebeamerfont{author}\tableofcontents
-      [
-        currentsection,
-        sectionstyle=hide/hide,
-        subsectionstyle=show/show/hide
-        ]}};
+        at ([yshift=50pt,xshift=0\linewidth]current page.south)
+        {\parbox[t]{\textwidth}{
+             \centering%
+             \usebeamerfont{author}
+             \textpdfrender{TextRenderingMode=FillStroke,
+                            FillColor=white,
+                            LineWidth=.1ex
+                            }{\begin{minipage}{0.45\textwidth}
+                            \tableofcontents[currentsection,
+                                               sectionstyle=hide/hide,
+                                               subsectionstyle=show/show/hide
+                                            ]
+                              \end{minipage}
+                              \begin{minipage}{0.45\textwidth}
+                                A
+                              \end{minipage}
+                            }
+                                }
+        };
     \end{tikzpicture}
-    \end{frame}}
+    \end{frame}
+    }
     \addtocounter{framenumber}{-1}
 }
 
@@ -439,16 +451,16 @@ pdfproducer={}
 \setbeamercolor{subsection in toc}{fg=gblue700}
 
 %Changing numbering in TOC
-%\setbeamertemplate{sections/subsections in toc}[square]
-%\setbeamertemplate{section in toc}{\inserttocsection}
-%\setbeamerfont{section in toc}{series=\bfseries}
+% \setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{section in toc}{\inserttocsection}
+\setbeamerfont{section in toc}{series=\bfseries}
 %
 %% TOC must be loaded before \begin{document}
-%\AtBeginSection[]{
-%	\begin{frame}<beamer>
-%		%\frametitle{Overview}
-%		\tableofcontents[currentsection,hideallsubsections,subsubsectionstyle=hide]
-%	\end{frame}
-%	\addtocounter{framenumber}{-1} 
-%}
+% \AtBeginSection[]{
+% 	\begin{frame}<beamer>
+% 		%\frametitle{Overview}
+% 		\tableofcontents[currentsection,hideallsubsections,subsubsectionstyle=hide]
+% 	\end{frame}
+% 	\addtocounter{framenumber}{-1} 
+% }
 
