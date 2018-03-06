@@ -271,7 +271,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	}
 
 	\section[Gradient Descent]{Gradient Descent}
-
+	\subsection{Algorithm}
 	% Use slides from http://www.seas.ucla.edu/~vandenbe/236C/lectures/gradient.pdf
 	\frame[c]{
 		\frametitle{Gradient Descent: Algorithm}
@@ -302,6 +302,13 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\end{itemize}
 
 	}
+
+	\frame[c]{
+		\frametitle{Gradient Descent: Example}
+
+	}
+
+	\subsection{Convergence Analysis}
 	\frame[c]{
 		Think about this
 		\begin{tcolorbox}[title=Theorem]
@@ -309,7 +316,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 				\[|f(x_k)-f(x^\ast)|=\dfrac{|x_0-x^\ast|^2}{2\alpha k}\;.\]
 		\end{tcolorbox}
 
-		Consequence: let $\varepsilon>0$ be the error tolerance the minimum number of iterations $n$ is $O(1/\varepsilon)$
+		Consequence: let $\varepsilon>0$ be thenote error tolerance the minimum number of iterations $n$ is $O(1/\varepsilon)$
 
 	}
 
@@ -465,7 +472,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\frametitle{Dynamics of Momentum: Types of Responses}
 		\begin{adjustwidth}{-2em}{-2em}
 		\begin{figure}[htpb!]
-			\includegraphics[width=\linewidth]{imgs/2nd_order_responses.png}
+			\includegraphics[width=\linewidth]{imgs/2nd_order_responses.eps}
 		\end{figure}
 		\end{adjustwidth}
 	}
