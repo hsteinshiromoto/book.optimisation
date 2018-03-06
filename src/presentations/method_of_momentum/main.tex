@@ -237,38 +237,13 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\end{adjustwidth}
 	}
 
-	\frame[c]{
-		\frametitle{Hypothesis}
-		\begin{tcolorbox}[title=Assumption on $f$]
-		\begin{itemize}
-			\item For every $c\in\mathbb{R}_{>0}$, the set
-			\[\{x\in\mathbb{R}:f(x)\leq c\}\]
-			is closed;
-
-			\item $\inf_{x\in D}f(x)>-\infty$
-		\end{itemize}
-		\end{tcolorbox}
-	}
-	% Ref. Boyd, Vanderberghe, Convex optm
-	\frame[c]{
-		\frametitle{Strong convexity: Definition and Property}
-
-		\begin{itemize}
-			\item Definition: The function $f$ is said to be \emph{strong convex} if 
-		\[\exists\underline{m}>0, H(\cdot)\succeq \underline{m}I\;,\]
- 		where $H$ is the Hessian of $f$.
-
- 			\item Property\footnote{Borwen and Vanderweff, ``Convex Functions - Constructions, Characterizations and Counterexamples'', CUP, 2010, Ch. 5}
- 		\[f(y)\geq f(x)+\nabla f(x)\cdot(y-x)+\dfrac{\underline{m}}{2}|y-x|_2^2\]
- 		\end{itemize}
-
 % 		\[H(x)=\nabla^2 f(x)=\begin{bmatrix}
 % \dfrac{\partial^2f_1}{\partial x_1^2}&\dfrac{\partial^2f_1}{\partial x_1\partial x_2}&\cdots&\dfrac{\partial^2f_1}{\partial x_1\partial x_n}\\
 % \dfrac{\partial^2f_2}{\partial x_2\partial x_1}&\dfrac{\partial^2f_2}{\partial x_2^2}&\cdots&\dfrac{\partial^2f_2}{\partial x_2\partial x_n}\\
 % \vdots&\vdots&\ddots&\vdots\\
 % \dfrac{\partial^2f_n}{\partial x_n\partial x_1}&\dfrac{\partial^2f_n}{\partial x_n\partial x_2}&\cdots&\dfrac{\partial^2f_n}{\partial x_n^2}
 % \end{bmatrix}(x)\]
-	}
+	
 
 	\section[Gradient Descent]{Gradient Descent}
 	\subsection{Algorithm}
@@ -276,24 +251,52 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	\frame[c]{
 		\frametitle{Gradient Descent: Algorithm}
 		\begin{adjustwidth}{-2em}{-2em}
+		Hypotheses:
+		\begin{itemize}
+			\item $f$ is convex, differentiable and $\dom f=\mathbb{R}^n$
+
+			\item $\nabla f$ is Lipschitz continuous with parameter $L>0$
+
+			\item The optimal value $f^\ast=\inf_{x\in\mathbb{R}^n} f(x)$ is
+				  finite and attained at $x^\ast$
+		\end{itemize}
 		\begin{tcolorbox}
 			\begin{enumerate}
 				\item Definitions:
 
 					Let $k=0$, $\alpha>0$ be the \emph{stepsize}, 
-					$\varepsilon_x$, $\varepsilon_f$ be the \emph{tolerances} 
-					and $x(0)=x_0\in D$ be an initial point
+					$\varepsilon$ be the \emph{tolerance} and $x(0)=x_0\in D$
+					 be an initial point
 
 				\item Computation:
 				\[x(k+1)=x(k) - \alpha\nabla f(x(k))\]
 
 				\item Stop condition:
 
-				If $|x(k) - x^\ast|\leq\varepsilon_x$ and/or $|f(x(k)) - f(x^\ast)|\leq\varepsilon_f$, stop. Else, go to 2.
+				If $|f(x(k)) - f(x^\ast)|\leq\varepsilon_f$, stop. Else, go to 2.
 			\end{enumerate}
 		\end{tcolorbox}
 		\end{adjustwidth}
 
+	
+
+	}
+
+	\frame[c]{
+		\frametitle{Gradient Descent: Example}
+		\begin{adjustwidth}{-2em}{-2em}
+		\[f(x,y)=4x^2+y^2\]
+		\begin{figure}[htbp!]
+			\centering
+			\includegraphics[width=\linewidth]{imgs/grad_contour.eps}
+		\end{figure}
+		\end{adjustwidth}
+	}
+
+	\subsection{Convergence Analysis}
+	\frame[c]{
+		\frametitle{Gradient Descent: Analysis}
+		\begin{adjustwidth}{-2em}{-2em}
 		Advantages:
 		\begin{itemize}
 			\item Every iteration is inexpensive
@@ -301,65 +304,29 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 			\item Does not require second-order derivatives
 		\end{itemize}
 
+		Iterations:
+		\begin{itemize}
+			\item For every $k\in\mathbb{N}$,
+			\[f(x(k))-f(x^\ast)\leq \dfrac{1}{2k\alpha}||x^\ast-x(0)||_2\]
+
+			\item The number of iterations such that $f(x(k))-f(x^\ast)<\varepsilon$
+				  is $O(1/\varepsilon)$
+		\end{itemize}
+		\end{adjustwidth}
 	}
 
 	\frame[c]{
-		\frametitle{Gradient Descent: Example}
+		\frametitle{Gradient Descent: Analysis (cont.)}
+		\begin{adjustwidth}{-2em}{-2em}
+		Limits on convergence:
+			\begin{tcolorbox}[title=Theorem]
+				For every integer $k\leq(n-1)/2$ and for every $x(0)\in\dom f$,
+				there exist functions satisfying the algorithms hypotheses 
+				such that
+				\[f(x(k)) - f(x^\ast)\geq \dfrac{3L||x^\ast-x(0)||_2^2}{32(k+1)^2}\]
+			\end{tcolorbox}
+		\end{adjustwidth}
 
-	}
-
-	\subsection{Convergence Analysis}
-	\frame[c]{
-		Think about this
-		\begin{tcolorbox}[title=Theorem]
-				Let $L$ be the Lipschitz constant of $\nabla f$ and $\alpha< \tfrac{2}{L}$, then,
-				\[|f(x_k)-f(x^\ast)|=\dfrac{|x_0-x^\ast|^2}{2\alpha k}\;.\]
-		\end{tcolorbox}
-
-		Consequence: let $\varepsilon>0$ be thenote error tolerance the minimum number of iterations $n$ is $O(1/\varepsilon)$
-
-	}
-
-	\frame[c]{
-		Think about this
-		% ref: http://users.ece.utexas.edu/~cmcaram/EE381V_2012F/Lecture_4_Scribe_Notes.final.pdf
-		\begin{tcolorbox}[title=Lemma]
-				If $f$ be Lipschitzian and convex on $D$ with constant $L$, then for every $x,y\in D$,
-				 \[f(x)-f(y)-\nabla f(x)\cdot(y-x)\leq\dfrac{L}{2}|x-y|^2\]
-		\end{tcolorbox}
-
-		\begin{enumerate}
-			% Nesterov, "Introductory lectures on convex optm", Thm 2.1.14
-			\item 
-			% Note that
-			% \begin{align*}
-			% 	|x_{k+1}-x^\ast|^2=&\ |x_k-x^\ast-\alpha\nabla f(x_k)|^2\\
-			% 	=&\ |x_k-x^\ast|^2-2\alpha\nabla f(x_k)\cdot (x_k-x^\ast)+\alpha^2|\nabla f(x_k)|^2
-			% \end{align*} 
-
-			Let $x_{k+1}=x_k-\alpha \nabla f(x_k)$. From the previous lemma, 
-			\begin{align*}
-			f(x_{k+1})\leq&\ f(x_k) + \nabla f(x_k)(x_{k+1}-x_k)+\dfrac{L}{2}|x_{k+1}-x_k|^2\\
-			=&\ f(x_k)- \alpha\left(1-\dfrac{\alpha}{2}L\right)|\nabla f(x_k)|^2
-			\end{align*}
-
-			\item Consequently,
-			\[|\nabla f(x_k)|^2\leq \dfrac{1}{\alpha\left(1-\dfrac{\alpha}{2}L\right)}(f(x_k)-f(x_{k+1}))\;.\]
-		\end{enumerate}
-	}
-
-	\frame[c]{
-		\begin{enumerate}[3.]
-			\item For every $l>0$,
-			\[\sum_{k=1}^l |\nabla f(x_k)|^2\leq \dfrac{1}{\alpha\left(1-\dfrac{\alpha}{2}L\right)}(f(x_0)-f(x_l))\]
-
-			\item Thus, $|\nabla f(x_k)|^2\to0$, as $k\to\infty$. Hence $x_k\to x^\ast$;
-
-			\item Also, for every $k>0$,
-			\begin{align*}
-			f(x_{k+1})-f(x_k)\leq& +\left(\dfrac{L}{2}-\dfrac{1}{\alpha}\right)|x_{k+1}-x_k|^2
-			\end{align*}
-		\end{enumerate}
 	}
 
 
@@ -477,152 +444,11 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\end{adjustwidth}
 	}
 
-	\subsection{Items and lists}
+	\section{Conclusion}
+	\subsection{Remarks}
 	\frame[c]{
-		\frametitle{The second frame: items}
-		\begin{adjustwidth}{-2em}{-2em}
-		\blindlist{itemize}[3]	
-		\end{adjustwidth}
-	}
+		\frametitle{a}
 
-	\frame[c]{
-		\frametitle{The third frame: numbered items}
-		\begin{adjustwidth}{-2em}{-2em}
-		\blindlist{enumerate}[5]	
-		\end{adjustwidth}
 	}
-	
-	\frame[c]{
-		\frametitle{The fourth frame: description list}
-		\begin{adjustwidth}{-2em}{-2em}
-		\blindlist{description}[2]	
-		\end{adjustwidth}
-	}
-	
-	\subsection{Figure}
-	\frame[c]{
-		\frametitle{The Second Frame: a figure}
-		\begin{adjustwidth}{-2em}{-2em}
-		\begin{figure}[htpb!]
-			\centering
-			\scalebox{0.75}{\input{./imgs/set_evolution.eps_tex}}
-		\end{figure}
-		\end{adjustwidth}
-		}
-	\section{Tests with boxes}
-	\subsection{Box without shadows}
-	\frame[c]{
-		\frametitle{Without shadows}
-		
-		\begin{tcolorbox}[title=A test]
-This is an equation
-\begin{equation*}
-	\int_{X(t,\mathbf{Z})}\rho\,dx-\int_\mathbf{Z}=\int_0^t\int_{X(s,\mathbf{Z})}\nabla(\rho f)(x)\,dx
-\end{equation*}
-\end{tcolorbox}\par\bigskip
-\begin{tcolorbox}
-This is a tcolorbox.
-\end{tcolorbox}\par\bigskip
-}
-
-	\subsection{Lifted shadows}
-	
-	\frame[c]{
-	\frametitle{Lifted shadows}
-				\begin{tcolorbox}[drop lifted shadow]
-This is a tcolorbox.
-\end{tcolorbox}\par\bigskip
-\begin{tcolorbox}[title=Another shadow,
-drop lifted shadow]
-This is a tcolorbox.
-\end{tcolorbox}\par\bigskip
-\begin{tcolorbox}[drop lifted shadow]
-\begin{equation*}
-% Todo: check why \dot{x} doesn't work
-	\dfrac{dx}{dt}=f(x)
-\end{equation*}
-\end{tcolorbox}\par\bigskip
-\begin{tcolorbox}[code={\pgfkeysalsofrom\redblock},title=A test,drop lifted shadow]
-Test.
-\end{tcolorbox}		
-	}
-	
-	\subsection{Midday Shadows}
-	
-	\frame[c]{
-		\frametitle{Midday shadows}
-		
-		\begin{tcolorbox}[drop fuzzy midday shadow,
-enhanced,colback=red!5!white,colframe=gred900]
-This is a tcolorbox.
-\end{tcolorbox}\par\bigskip
-\begin{tcolorbox}[title=Another shadow,drop fuzzy midday shadow,
-enhanced,colback=red!5!white,colframe=gred900]
-This is a tcolorbox.
-\end{tcolorbox}
-}
-
-% \frame[t]{
-% 	% Requires definition of \normal and \light fonts
-% 	\frametitle{Variations on the title: available if \texttt{normal} and \texttt{light} defined}
-% 	\begin{tcolorbox}[title=Another shadow,
-% drop lifted shadow]
-% This is a tcolorbox.
-% \end{tcolorbox}\par\bigskip
-% \begin{tcolorbox}[fonttitle=\normal,title=Another shadow,
-% drop lifted shadow]
-% This is a tcolorbox.
-% \end{tcolorbox}\par\bigskip
-% \begin{tcolorbox}[fonttitle=\light,title=Another shadow,
-% drop lifted shadow]
-% This is a tcolorbox.
-% \end{tcolorbox}
-% }
-
-			\frame[c]{
-	\frametitle{Small boxes with midday, and lifted shadows}
-	\begin{minipage}[c]{0.30\linewidth}
-	\begin{tcolorbox}[code={\pgfkeysalsofrom\postitblock},drop fuzzy midday shadow,hbox]
-Test.
-\end{tcolorbox}
-\begin{tcolorbox}[code={\pgfkeysalsofrom\whiteblock},drop fuzzy midday shadow,hbox]
-Test.
-\end{tcolorbox}
-	\end{minipage}
-	\begin{minipage}[c]{0.30\linewidth}
-	\begin{tcolorbox}[code={\pgfkeysalsofrom\postitblock},drop lifted shadow,hbox]
-Test.
-\end{tcolorbox}
-\begin{tcolorbox}[code={\pgfkeysalsofrom\whiteblock},drop lifted shadow,hbox]
-Test.
-\end{tcolorbox}
-	\end{minipage}
-	\begin{minipage}[c]{0.30\linewidth}
-	\begin{tcolorbox}[code={\pgfkeysalsofrom\postitblock},drop fuzzy shadow south,hbox]
-Test.
-\end{tcolorbox}
-\begin{tcolorbox}[code={\pgfkeysalsofrom\whiteblock},drop fuzzy shadow south,hbox]
-Test.
-\end{tcolorbox}
-	\end{minipage}
-	
-	\begin{tcolorbox}[code={\pgfkeysalsofrom\postitblock},drop lifted shadow]
-	\begin{varwidth}{\textwidth}
-	The text
-	
-       $\int_{X(t,\mathbf{Z})}\rho\,dx-\int_\mathbf{Z}=\int_0^t\int_{X(s,\mathbf{Z})}\nabla(\rho f)(x)\,dx$
-       \end{varwidth}
-       \end{tcolorbox}
-	}
-	
-	\section{Theorem-like environments}
-	\subsection{Theorem environments}
-	\frame[c]{	
-		\frametitle{ToDo}
-	
-	}
-	\subsection{Definition environments}
-	
-	\subsection{Example environments}
 		
 \end{document}
