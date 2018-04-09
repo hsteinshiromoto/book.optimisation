@@ -466,5 +466,6 @@ pdfproducer={}
 
 % Background image
 
-\setbeamertemplate{background canvas}{\tikz[overlay,remember picture]\node[opacity=0.5]at ([yshift=20pt,xshift=-30pt]current page.south east){\scalebox{0.15}{\input{imgs/qbe-logo.eps_tex}}};}
+\setbeamertemplate{background canvas}{%
+\tikz[overlay,remember picture]\node[opacity=0.5]at ([yshift=20pt,xshift=-30pt]current page.south east){\scalebox{0.15}{\input{imgs/qbe-logo.eps_tex}}};}
 
