@@ -188,6 +188,72 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	\subsection[Motivation]{Motivation}	
 
 	\frame[c]{
+		\frametitle{Motivation (1/3)}
+		\begin{adjustwidth}{-2em}{-2em}
+			\begin{minipage}{0.45\linewidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=\linewidth]{./imgs/spacex_landing.jpg}
+				\end{figure}
+			\end{minipage}
+			\hspace{0.05\linewidth}
+			\begin{minipage}{0.45\linewidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=\linewidth]{imgs/fig-nn.jpg}
+				\end{figure}
+			\end{minipage}
+		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Motivation (2/3)}
+		\begin{adjustwidth}{-2em}{-2em}
+			\begin{minipage}{0.45\linewidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=\linewidth]{./imgs/spacex_landing.jpg}
+				\end{figure}
+			\end{minipage}
+			\hspace{0.05\linewidth}
+			\begin{minipage}{0.45\linewidth}
+				Minimize the Lagrangian
+				\[J=T-V\;,\]
+				where 
+				\begin{description}
+					\item[T] is the kinetic energy;
+
+					\item[V] gravitational potential energy.
+				\end{description}
+			\end{minipage}
+		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Motivation (3/3)}
+		\begin{adjustwidth}{-2em}{-2em}
+			\begin{minipage}{0.45\linewidth}
+				Minimize the loss function
+				\[J=\dfrac{1}{2}\sum_{i=1}^n ||f(x_i)-y_i||_2^2\]
+				where 
+				\begin{description}
+					\item[$y_i$] is an observation;
+
+					\item[f] function to be approximated.
+				\end{description}
+			\end{minipage}
+			\hspace{0.05\linewidth}
+			\begin{minipage}{0.45\linewidth}
+				\begin{figure}
+					\centering
+					\includegraphics[width=\linewidth]{imgs/fig-nn.jpg}
+				\end{figure}
+			\end{minipage}
+		\end{adjustwidth}
+	}
+
+	\subsection{Problem Formulation}
+	\frame[c]{
 		\frametitle{Problem Formulation}
 		\begin{adjustwidth}{-2em}{-2em}
 		Let $D\subset\mathbb{R}^n$ be an open set, and $f\in\mathcal{C}^2(D,\mathbb{R})$
@@ -196,29 +262,13 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 			\min_{x\in D} f(x)
 		\end{equation*}
 
-		\begin{tcolorbox}[title=A Necessary Condition]
-		The point $x^\ast\in D$ is a solution to the optimisation problem if
-		\begin{equation*}
-			\nabla f(x^\ast)=0\;.
-		\end{equation*}
-		\end{tcolorbox}
-
-		\end{adjustwidth}
-	}
-
-	\subsection[Background]{Background}
-
-	\frame[c]{
-		\begin{adjustwidth}{-2em}{-2em}
-			\begin{tcolorbox}[title=Definition: convex function]
+		\begin{tcolorbox}[title=Definition: convex function]
 				The function $f\in\mathcal{C}^2(D,\mathbb{R})$ is \emph{convex} 
 				if the set $D$ is convex and, for every $x_1,x_2\in D$, the 
-				inequalities
-				\[(\nabla f(x)-\nabla f(y))\cdot(x-y)\geq0\]
-				and
+				inequality
 				\[f(t x_1+(1-t)x_2)\leq tf(x_1)+(1-t)f(x_2)\]
 				hold, for every $t\in[0, 1]$
-			\end{tcolorbox}
+		\end{tcolorbox}
 		\end{adjustwidth}
 	}
 
