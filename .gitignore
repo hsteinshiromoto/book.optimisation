@@ -20,8 +20,9 @@
 *-converted-to.*
 # these rules might exclude image files for figures etc.
 # *.ps
-# *.eps
+*.eps
 *.pdf
+*.jpg
 
 ## Generated if empty string is given at "Please type another file name for output:"
 .pdf
