@@ -403,6 +403,7 @@ pdfproducer={}
 \AtBeginSection[]{%
     {
     \setbeamercolor{upper separation line head}{bg=gblue700}
+    \setbeamertemplate{background canvas}{}
     \begin{frame}
     \begin{tikzpicture}[remember picture,overlay]
     \fill[gblue700]
@@ -431,8 +432,12 @@ pdfproducer={}
                                                subsectionstyle=show/show/hide
                                             ]
                               \end{minipage}
+                              \vrule{}
                               \begin{minipage}{0.45\textwidth}
-                                A
+                                \begin{figure}[htbp!]
+                                    \centering
+                                    \scalebox{0.35}{\input{imgs/qbe-logo.eps_tex}}
+                                \end{figure}
                               \end{minipage}
                             }
                                 }
@@ -464,7 +469,9 @@ pdfproducer={}
 % 	\addtocounter{framenumber}{-1} 
 % }
 
-% Background image
+%%%%%%%%%%%%%%%%%%%%%
+% BACKGROUND IMAGE  %
+%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamertemplate{background canvas}{%
 \tikz[overlay,remember picture]\node[opacity=0.5]at ([yshift=20pt,xshift=-30pt]current page.south east){\scalebox{0.15}{\input{imgs/qbe-logo.eps_tex}}};}

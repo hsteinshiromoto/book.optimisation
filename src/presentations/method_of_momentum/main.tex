@@ -252,39 +252,92 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\end{adjustwidth}
 	}
 
-	\subsection{Problem Formulation}
+	\subsection[Problem]{Problem Formulation}
 	\frame[c]{
 		\frametitle{Problem Formulation}
 		\begin{adjustwidth}{-2em}{-2em}
-		Let $D\subset\mathbb{R}^n$ be an open set, and $f\in\mathcal{C}^2(D,\mathbb{R})$
+		Let $D\subset\mathbb{R}^n$ be an open set, and $f\in\mathcal{C}^1(D,\mathbb{R})$
 
 		\begin{equation*}
-			\min_{x\in D} f(x)
+			\min_{x\in D} f(x).
 		\end{equation*}
+		\end{adjustwidth}
+	}
 
+	\subsection{Background}
+	\frame[c]{
+		\frametitle{Background: convex functions}
+		\begin{adjustwidth}{-2em}{-2em}
 		\begin{tcolorbox}[title=Definition: convex function]
-				The function $f\in\mathcal{C}^2(D,\mathbb{R})$ is \emph{convex} 
+				The function $f\in\mathcal{C}^1(D,\mathbb{R})$ is \emph{convex} 
 				if the set $D$ is convex and, for every $x_1,x_2\in D$, the 
 				inequality
 				\[f(t x_1+(1-t)x_2)\leq tf(x_1)+(1-t)f(x_2)\]
-				hold, for every $t\in[0, 1]$
+				holds, for every $t\in[0, 1]$.
 		\end{tcolorbox}
 		\end{adjustwidth}
 	}
 
 	\frame[c]{
+		\frametitle{Background: convex functions (cont.)}
 		\begin{adjustwidth}{-2em}{-2em}
-		The gradient of $f$ is said to be \emph{Lipschitz continuous} if there 
+		The function
+		\[\mathbb{R}\ni x\mapsto f(x)=x^2,\]
+		is convex, for every $x_1,x_2\in\mathbb{R}$, 
+		\[f(t x_1+(1-t)x_2)\leq tf(x_1)+(1-t)f(x_2).\]
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{./imgs/fig-convex_function.eps}
+		\end{figure}
+		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\begin{adjustwidth}{-2em}{-2em}
+		\frametitle{Background: Gradient}
+		Let $f\in\mathcal{C}^1(\mathbb{R}^n,\mathbb{R})$. The \emph{gradient} 
+		of $f$ at $x\in\mathbb{R}^n$ is
+		\[
+		\begin{array}{rrcl}
+			\nabla f:&\mathbb{R}^n&\to&\mathbb{R}^n\\
+			&x&\mapsto&\begin{bmatrix}\dfrac{\partial f}{\partial x_1}(x)\\ \vdots\\ \dfrac{\partial f}{\partial x_n}(x)\end{bmatrix}
+		\end{array}
+		\]
+
+		The gradient is tangent to $f$.
+		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Background: Gradient (cont.)}
+		\begin{adjustwidth}{-2em}{-2em}
+		The function
+		\[\mathbb{R}\ni x\mapsto f(x)=x^2,\]
+		has gradient $\nabla f(x)=2x$.
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{imgs/fig-gradient_f.eps}
+		\end{figure}
+		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Background: Lipschitz continuity}
+		\begin{adjustwidth}{-2em}{-2em}
+		The gradient of $f$ ($\nabla f$) is said to be \emph{Lipschitz continuous} if there 
 		exits $L>0$ such that the inequality
 		\[||\nabla f(x)-\nabla f(y)||_2\leq L||x-y||_2\]
-		holds, for every $x,y\in D$
+		holds, for every $x,y\in D$.
 
-		\begin{tcolorbox}[title=Approximation bound]
-			If $x^\ast\in D$ is a solution to the optimisation problem and 
-			$D=\mathbb{R}^n$, then
-			\[\dfrac{1}{2L}||\nabla f(x)||_2^2\leq f(x)-f(x^\ast)\leq
-			\dfrac{L}{2}||x-x^\ast||_2^2\]
-		\end{tcolorbox}
+		The curvature of $f$ is bounded.
+
+		% \begin{tcolorbox}[title=Approximation bound]
+		% 	If $x^\ast\in D$ is a solution to the optimisation problem and 
+		% 	$D=\mathbb{R}^n$, then
+		% 	\[\dfrac{1}{2L}||\nabla f(x)||_2^2\leq f(x)-f(x^\ast)\leq
+		% 	\dfrac{L}{2}||x-x^\ast||_2^2\]
+		% \end{tcolorbox}
 		\end{adjustwidth}
 	}
 
@@ -324,7 +377,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 				\item Stop condition:
 
-				If $|f(x(k)) - f(x^\ast)|\leq\varepsilon_f$, stop. Else, go to 2.
+				If $|f(x(k)) - f(x(k+1))|_2\leq\varepsilon_f$, stop. Else, go to 2.
 			\end{enumerate}
 		\end{tcolorbox}
 		\end{adjustwidth}
