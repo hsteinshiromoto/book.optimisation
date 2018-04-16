@@ -217,6 +217,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 			\end{minipage}
 			\hspace{0.05\linewidth}
 			\begin{minipage}{0.45\linewidth}
+			\underline{Todo}: verify Lagrangian mechanics
 				Minimize the Lagrangian
 				\[J=T-V\;,\]
 				where 
@@ -264,6 +265,15 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\end{adjustwidth}
 	}
 
+% 		\[H(x)=\nabla^2 f(x)=\begin{bmatrix}
+% \dfrac{\partial^2f_1}{\partial x_1^2}&\dfrac{\partial^2f_1}{\partial x_1\partial x_2}&\cdots&\dfrac{\partial^2f_1}{\partial x_1\partial x_n}\\
+% \dfrac{\partial^2f_2}{\partial x_2\partial x_1}&\dfrac{\partial^2f_2}{\partial x_2^2}&\cdots&\dfrac{\partial^2f_2}{\partial x_2\partial x_n}\\
+% \vdots&\vdots&\ddots&\vdots\\
+% \dfrac{\partial^2f_n}{\partial x_n\partial x_1}&\dfrac{\partial^2f_n}{\partial x_n\partial x_2}&\cdots&\dfrac{\partial^2f_n}{\partial x_n^2}
+% \end{bmatrix}(x)\]
+	
+
+	\section[Gradient Descent]{Gradient Descent}
 	\subsection{Background}
 	\frame[c]{
 		\frametitle{Background: convex functions}
@@ -296,7 +306,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	\frame[c]{
 		\begin{adjustwidth}{-2em}{-2em}
 		\frametitle{Background: Gradient}
-		Let $f\in\mathcal{C}^1(\mathbb{R}^n,\mathbb{R})$. The \emph{gradient} 
+		Let $f\in\mathcal{C}^1(D,\mathbb{R})$. The \emph{gradient} 
 		of $f$ at $x\in\mathbb{R}^n$ is
 		\[
 		\begin{array}{rrcl}
@@ -341,15 +351,6 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\end{adjustwidth}
 	}
 
-% 		\[H(x)=\nabla^2 f(x)=\begin{bmatrix}
-% \dfrac{\partial^2f_1}{\partial x_1^2}&\dfrac{\partial^2f_1}{\partial x_1\partial x_2}&\cdots&\dfrac{\partial^2f_1}{\partial x_1\partial x_n}\\
-% \dfrac{\partial^2f_2}{\partial x_2\partial x_1}&\dfrac{\partial^2f_2}{\partial x_2^2}&\cdots&\dfrac{\partial^2f_2}{\partial x_2\partial x_n}\\
-% \vdots&\vdots&\ddots&\vdots\\
-% \dfrac{\partial^2f_n}{\partial x_n\partial x_1}&\dfrac{\partial^2f_n}{\partial x_n\partial x_2}&\cdots&\dfrac{\partial^2f_n}{\partial x_n^2}
-% \end{bmatrix}(x)\]
-	
-
-	\section[Gradient Descent]{Gradient Descent}
 	\subsection{Algorithm}
 	% Use slides from http://www.seas.ucla.edu/~vandenbe/236C/lectures/gradient.pdf
 	\frame[c]{
@@ -410,7 +411,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 		Iterations:
 		\begin{itemize}
-			\item For every $k\in\mathbb{N}$,
+			\item For every $k\in\mathbb{N}$, \underline{Todo}: review this inequality
 			\[f(x(k))-f(x^\ast)\leq \dfrac{1}{2k\alpha}||x^\ast-x(0)||_2\]
 
 			\item The number of iterations such that $f(x(k))-f(x^\ast)<\varepsilon$
@@ -424,7 +425,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\begin{adjustwidth}{-2em}{-2em}
 		Limits on convergence:
 			\begin{tcolorbox}[title=Theorem]
-				For every integer $k\leq(n-1)/2$ and for every $x(0)\in\dom f$,
+				For every integer $k\leq(n-1)/2$ and for every $x(0)\in D$,
 				there exist functions satisfying the algorithms hypotheses 
 				such that
 				\[f(x(k)) - f(x^\ast)\geq \dfrac{3L||x^\ast-x(0)||_2^2}{32(k+1)^2}\]
@@ -437,7 +438,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	\section[Method of Momentum]{Method of Momentum}
 	\subsection{Introduction}
 	\frame[c]{
-		\frametitle{A}
+		\frametitle{Tweaking the gradient descent}
 		Add a memory term to the gradient descent algorithm
 		\begin{equation*}
 			\left\{\begin{array}{rcl}
