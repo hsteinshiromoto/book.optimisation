@@ -378,13 +378,10 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 				\item Stop condition:
 
-				If $|f(x(k)) - f(x(k+1))|_2\leq\varepsilon_f$, stop. Else, go to 2.
+				If $||f(x(k)) - f(x(k+1))||_2\leq\varepsilon_f$, stop. Else, go to 2.
 			\end{enumerate}
 		\end{tcolorbox}
 		\end{adjustwidth}
-
-	
-
 	}
 
 	\frame[c]{
@@ -411,7 +408,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 		Iterations:
 		\begin{itemize}
-			\item For every $k\in\mathbb{N}$, \underline{Todo}: review this inequality
+			\item For every $k\in\mathbb{N}$, 
 			\[f(x(k))-f(x^\ast)\leq \dfrac{1}{2k\alpha}||x^\ast-x(0)||_2\]
 
 			\item The number of iterations such that $f(x(k))-f(x^\ast)<\varepsilon$
@@ -422,9 +419,11 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 	\frame[c]{
 		\frametitle{Gradient Descent: Analysis (cont.)}
+		% Src: http://www.seas.ucla.edu/~vandenbe/236C/lectures/gradient.pdf
 		\begin{adjustwidth}{-2em}{-2em}
-		Limits on convergence:
-			\begin{tcolorbox}[title=Theorem]
+		Limit on convergence:
+		\vspace{2em}
+			\begin{tcolorbox}[title=Theorem (Nesterov)]
 				For every integer $k\leq(n-1)/2$ and for every $x(0)\in D$,
 				there exist functions satisfying the algorithms hypotheses 
 				such that
@@ -436,9 +435,10 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 
 	\section[Method of Momentum]{Method of Momentum}
-	\subsection{Introduction}
+	\subsection{Formulation}
 	\frame[c]{
 		\frametitle{Tweaking the gradient descent}
+		\underline{Todo:} make notation $x^+$ and $x(k+1)$ consistent
 		Add a memory term to the gradient descent algorithm
 		\begin{equation*}
 			\left\{\begin{array}{rcl}
@@ -453,7 +453,11 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\frametitle{Dynamics of momentum: Formulation (1/2)}
 		\begin{adjustwidth}{-2em}{-2em}
 		Let
-		\[f(x)=\dfrac{1}{2}x^\top Ax-b^\top x\,\]
+		\[\begin{array}{rrcl}
+		f:&\mathbb{R}^n&\to&\mathbb{R}\\
+		&x&\mapsto&\dfrac{1}{2}x^\top Ax-b^\top x
+		\end{array}
+		\]
 		where $A$ is symmetric, positive semi definite and nonsingular.
 
 		\begin{equation*}
@@ -495,16 +499,18 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 	\frame[c]{
 		\frametitle{Dynamics of momentum: Linear Difference Systems}
-	\begin{adjustwidth}{-2em}{-2em}
-		The convergence depends on the solutions to the system $v^+=Rv$
-
-		The analysis of the matrix $R$ provides the behaviour of the 
-		convergence of the method
-
-		A solution to $v^+=Rv$, starting from an \emph{initial condition}
-		$v_0$, is function $V:\mathbb{R}_{\geq0}\to\mathbb{R}^n$ defined as
-		$V(k,v)$. 
-	\end{adjustwidth}
+		\begin{adjustwidth}{-2em}{-2em}
+			\begin{itemize}
+			\item The convergence depends on the solutions to the system $v^+=Rv$;
+			\vspace{3em}
+			\item The analysis of the matrix $R$ provides the behaviour of the 
+					convergence of the method;
+			\vspace{3em}
+			\item A solution to $v^+=Rv$, starting from an \emph{initial condition}
+				$v_0$, is function $V:\mathbb{R}_{\geq0}\to\mathbb{R}^n$ defined as
+				$V(k,v)$. 
+			\end{itemize}
+		\end{adjustwidth}
 	}
 
 	\frame[c]{
@@ -512,18 +518,17 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\begin{adjustwidth}{-2em}{-2em}
 		Equilibrium and stability
 		\begin{itemize}
-		\item A point $\nu$ is said to be an \emph{equilibrium point}
-		to $v^+=Rv$ if $R\nu=\nu$
+		\item The origin is an \emph{equilibrium point} to $v^+=Rv$ if $R\nu=0$
 
-		\item  The equilibrium $\nu$ is said to be (Lyapunov) \emph{stable}
+		\item  The origin is (Lyapunov) \emph{stable}
 		if
-		\[\forall\varepsilon>0, \forall v, \exists\delta>0:|v-\nu|<\delta\Rightarrow
-		|V(k,v)-V(k,\nu)|<\varepsilon, \forall k\in\mathbb{N}\]
+		\[\forall\varepsilon>0, \forall v, \exists\delta>0:||v||_2<\delta\Rightarrow
+		||V(k,0)||_2<\varepsilon, \forall k\in\mathbb{N}\]
 
-		\item The equilibrium $\nu$ is said to be \emph{attractive} if
-		\[\exists\delta>0, \forall |v-\nu|<\delta, \lim_{k\to\infty} V(k,v)\to \nu\]
+		\item The origin is \emph{attractive} if
+		\[\exists\delta>0, \forall ||v||_2<\delta, \lim_{k\to\infty} V(k,v)\to \nu\]
 
-		\item The equilibrium $\nu$ is said to be \emph{asymptotically stable}
+		\item The origin is \emph{asymptotically stable}
 		if it is stable and attractive.
 		\end{itemize}
 
