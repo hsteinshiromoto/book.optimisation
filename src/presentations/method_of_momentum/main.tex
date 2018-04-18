@@ -217,14 +217,13 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 			\end{minipage}
 			\hspace{0.05\linewidth}
 			\begin{minipage}{0.45\linewidth}
-			\underline{Todo}: verify Lagrangian mechanics
-				Minimize the Lagrangian
-				\[J=T-V\;,\]
+				Minimize the total energy
+				\[V=T+P\;,\]
 				where 
 				\begin{description}
 					\item[T] is the kinetic energy;
 
-					\item[V] gravitational potential energy.
+					\item[P] gravitational potential energy.
 				\end{description}
 			\end{minipage}
 		\end{adjustwidth}
@@ -256,13 +255,25 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	\subsection[Problem]{Problem Formulation}
 	\frame[c]{
 		\frametitle{Problem Formulation}
-		\begin{adjustwidth}{-2em}{-2em}
 		Let $D\subset\mathbb{R}^n$ be an open set, and $f\in\mathcal{C}^1(D,\mathbb{R})$
 
 		\begin{equation*}
 			\min_{x\in D} f(x).
 		\end{equation*}
-		\end{adjustwidth}
+	}
+
+	\frame[c]{
+		\frametitle{Problem Formulation: Methodologies to Solve it}
+		\begin{equation*}
+			\min_{x\in D} f(x).
+		\end{equation*}
+		\begin{enumerate}
+			\item Gradient descent;
+
+			\item Method of Momentum;
+
+			\item Stochastic gradient descent, AdaMax, Conjugate gradient, etc ...
+		\end{enumerate}
 	}
 
 % 		\[H(x)=\nabla^2 f(x)=\begin{bmatrix}
@@ -443,10 +454,13 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\begin{equation*}
 			\left\{\begin{array}{rcl}
 			z^+&=&\beta z+\nabla f(x)\\
-			x^+&=&x-\alpha z^+\;.
+			x^+&=&x-\alpha z^+\;,
 			\end{array}
 			\right.
 		\end{equation*}
+		\vspace{2em}
+		where
+		\[z^+:=z(k+1)\quad\text{and}\quad x^+:=x(k+1)\]
 	}
 
 	\frame[c]{
@@ -472,7 +486,6 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	}
 	\frame[c]{
 		\frametitle{Dynamics of momentum: Formulation (2/2)}
-		\begin{adjustwidth}{-2em}{-2em}
 		
 		Let $Q$ be such that $A=Q\Lambda Q^\top$.
 
@@ -493,8 +506,6 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\item Let $v=(v_1,\ldots,v_n)$ and $R=\mathtt{blkdiag}(R_1,\ldots,R_n)$,
 		\[v^+=Rv\]
 		\end{itemize}
-
-	\end{adjustwidth}
 	}
 
 	\frame[c]{
@@ -538,11 +549,16 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 	\frame[c]{
 		\frametitle{Dynamics of Momentum: Implications for $\alpha$ and $\beta$}
-		Asymptotically stable if eigenvalues of $R$ satisfy $\max\{|\sigma_1|, 
-		|\sigma_2|\} <1$
+		\begin{itemize}
+			\item Let $\sigma_1$ and $\sigma_2$ be the eigenvalues of $R$
+		
+			\item System $v^+=Rv$ is asymptotically stable if $\sigma_1$ and 
+			$\sigma_2$ satisfy 
+		\[\max\{||\sigma_1||_2, ||\sigma_2||_2\} <1\]
 
-		Consequently, $\alpha$ and $\beta$ must satisfy the inequalities
+			\item Consequently, $\alpha$ and $\beta$ must satisfy the inequalities
 		\[0<\alpha\lambda_i<2(1+\beta)\quad\text{and}\quad 0\leq\beta <1\]
+		\end{itemize}
 	}
 
 	\frame[c]{
@@ -557,6 +573,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	\frame[c]{
 		\frametitle{Dynamics of Momentum: Example}
 		\begin{adjustwidth}{-2em}{-2em}
+		\[f(x,y)=4x^2+y^2\]
 		\begin{figure}[htpb!]
 			\includegraphics[width=\linewidth]{imgs/mom_contour.eps}
 		\end{figure}
