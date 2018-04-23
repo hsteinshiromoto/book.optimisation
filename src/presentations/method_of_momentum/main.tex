@@ -175,13 +175,13 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	}	
 	}
 
-	{
-	\begin{frame}<beamer>
-		\frametitle{Overview}
-		\tableofcontents[hideallsubsections,subsubsectionstyle=hide]
-	\end{frame}
-	\addtocounter{framenumber}{-1} 
-	}
+	% {
+	% \begin{frame}<beamer>
+	% 	\frametitle{Overview}
+	% 	\tableofcontents[hideallsubsections,subsubsectionstyle=hide]
+	% \end{frame}
+	% \addtocounter{framenumber}{-1} 
+	% }
 
 	
 	\section[Introduction]{Introduction}	
@@ -267,7 +267,8 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\begin{adjustwidth}{-2em}{-2em}
 			\begin{figure}
 					\centering
-					\scalebox{0.25}{\input{imgs/optimisation_map.eps_tex}}
+					% \scalebox{0.25}{\input{imgs/optimisation_map.pdf_tex}}
+					\includegraphics[width=\linewidth]{imgs/optimisation_map.eps}
 				\end{figure}
 		\end{adjustwidth}
 	}
@@ -602,8 +603,28 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	\section{Conclusion}
 	\subsection{Remarks}
 	\frame[c]{
-		\frametitle{a}
+		\frametitle{Conclusion}
+		\begin{itemize}
+			\item We considered an unconstrained, convex problem modelled by class $\mathcal{C}^1$ functions 
+			\vspace{2em}
+			\item A method to find minimima over convex sets is using the gradient
+			\vspace{2em}
+			\item We consider method of momentum for the gradient descent
+			\vspace{2em}
+			\item Consists of adding a memory term to the gradient descent algorithm
+		\end{itemize}
+	}
 
+	\subsection{Acknowledgment}
+	\frame[c]{
+		\frametitle{Thank you}
+		References
+		\begin{itemize}
+			\item L. Vandenberghe, ``Optimization Methods for Large-Scale Systems''.
+			\itshape{Lecture Notes}, UCLA
+			\vspace{2em}
+			\item S. Boyd, L. Vandenberghe, ``Convex Optimization''. \itshape{Cambridge University Press}, 2004.
+		\end{itemize}
 	}
 		
 \end{document}
