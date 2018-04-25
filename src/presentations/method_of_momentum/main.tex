@@ -283,7 +283,13 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 			\item Method of Momentum;
 
-			\item Stochastic gradient descent, AdaMax, Conjugate gradient, etc ...
+			\item Stochastic gradient descent
+
+			\item AdaMax
+
+			\item Conjugate gradient
+
+			\item $\vdots$
 		\end{enumerate}
 	}
 
@@ -400,7 +406,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 
 				\item Stop condition:
 
-				If $||f(x(k)) - f(x(k+1))||_2\leq\varepsilon_f$, stop. Else, go to 2.
+				If $||f(x(k)) - f(x(k+1))||_2\leq\varepsilon$, stop. Else, go to 2.
 			\end{enumerate}
 		\end{tcolorbox}
 		\end{adjustwidth}
@@ -460,7 +466,6 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 	\subsection{Formulation}
 	\frame[c]{
 		\frametitle{Tweaking the gradient descent}
-		\underline{Todo:} make notation $x^+$ and $x(k+1)$ consistent
 		Add a memory term to the gradient descent algorithm
 		\begin{equation*}
 			\left\{\begin{array}{rcl}
@@ -483,7 +488,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		&x&\mapsto&\dfrac{1}{2}x^\top Ax-b^\top x
 		\end{array}
 		\]
-		where $A$ is symmetric, positive semi definite and nonsingular.
+		where $A$ is symmetric, positive semidefinite and nonsingular.
 
 		\begin{equation*}
 			\left\{\begin{array}{rcl}
@@ -529,8 +534,8 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 					convergence of the method;
 			\vspace{3em}
 			\item A solution to $v^+=Rv$, starting from an \emph{initial condition}
-				$v_0$, is function $V:\mathbb{R}_{\geq0}\to\mathbb{R}^n$ defined as
-				$V(k,v)$. 
+				$v_0$, is a function $V:\mathbb{R}_{\geq0}\to\mathbb{R}^n$ defined as
+				$V(k,v_0)$ satisfying $V(k+1,v_0)=RV(k,v_0)$. 
 			\end{itemize}
 		\end{adjustwidth}
 	}
@@ -540,15 +545,15 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\begin{adjustwidth}{-2em}{-2em}
 		Equilibrium and stability
 		\begin{itemize}
-		\item The origin is an \emph{equilibrium point} to $v^+=Rv$ if $R\nu=0$
+		\item The origin is an \emph{equilibrium point} to $v^+=Rv$, since $R\nu=0$
 
 		\item  The origin is (Lyapunov) \emph{stable}
 		if
-		\[\forall\varepsilon>0, \forall v, \exists\delta>0:||v||_2<\delta\Rightarrow
-		||V(k,0)||_2<\varepsilon, \forall k\in\mathbb{N}\]
+		\[\forall\varepsilon>0, \forall v_0\in\mathbb{R}^n, \exists\delta>0:||v_0||_2<\delta\Rightarrow
+		||V(k,v_0)||_2<\varepsilon, \forall k\in\mathbb{N}\]
 
 		\item The origin is \emph{attractive} if
-		\[\exists\delta>0, \forall ||v||_2<\delta, \lim_{k\to\infty} V(k,v)\to \nu\]
+		\[\exists\delta>0, \forall ||v_0||_2<\delta, \lim_{k\to\infty} V(k,v_0)\to \nu\]
 
 		\item The origin is \emph{asymptotically stable}
 		if it is stable and attractive.
@@ -607,7 +612,7 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\begin{itemize}
 			\item We considered an unconstrained, convex problem modelled by class $\mathcal{C}^1$ functions 
 			\vspace{2em}
-			\item A method to find minimima over convex sets is using the gradient
+			\item A method to find minimima over convex sets is using the gradient of the cost function
 			\vspace{2em}
 			\item We consider method of momentum for the gradient descent
 			\vspace{2em}
@@ -620,10 +625,12 @@ firstinits=true,doi=false,isbn=false,url=false,backref=true,texencoding=utf8,bib
 		\frametitle{Thank you}
 		References
 		\begin{itemize}
-			\item L. Vandenberghe, ``Optimization Methods for Large-Scale Systems''.
-			\itshape{Lecture Notes}, UCLA
+			\item L. Vandenberghe, ``Optimization Methods for Large-Scale Systems''
+			\itshape{Lecture Notes}, UCLA, 2016
 			\vspace{2em}
 			\item S. Boyd, L. Vandenberghe, ``Convex Optimization''. \itshape{Cambridge University Press}, 2004.
+			\vspace{2em}
+			\item G. Goh, ``Why Momentum Really Works'', Distill, 2017
 		\end{itemize}
 	}
 		
