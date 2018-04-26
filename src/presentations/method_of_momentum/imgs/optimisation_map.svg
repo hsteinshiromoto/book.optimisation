@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="21cm"
-   height="29.700001cm"
-   viewBox="0 0 744.09449 1052.3622"
+   width="20.823565cm"
+   height="34.711456cm"
+   viewBox="0 0 737.84284 1229.9335"
    id="svg4345"
    version="1.1"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -20,9 +20,9 @@
      id="defs4347">
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="930.8098 : -789.35681 : 1"
-       inkscape:vp_y="-35.789137 : 2667.2699 : 0"
-       inkscape:vp_z="1532.672 : -726.21804 : 1"
+       inkscape:vp_x="930.80984 : -789.35678 : 1"
+       inkscape:vp_y="-35.789138 : 2667.2698 : 0"
+       inkscape:vp_z="1532.6721 : -726.21802 : 1"
        inkscape:persp3d-origin="1252.6985 : -1245.8352 : 1"
        id="perspective4553" />
   </defs>
@@ -34,8 +34,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="-127.75397"
-     inkscape:cy="-45.077828"
+     inkscape:cx="429.69524"
+     inkscape:cy="144.33158"
      inkscape:document-units="cm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -54,13 +54,19 @@
      inkscape:window-x="-13"
      inkscape:window-y="67"
      inkscape:window-maximized="1"
-     showguides="false">
+     showguides="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
        type="axonomgrid"
        id="grid4893"
        units="cm"
        empspacing="5"
-       spacingy="8.8582679" />
+       spacingy="8.8582679"
+       originx="339.95448"
+       originy="177.57131" />
   </sodipodi:namedview>
   <metadata
      id="metadata4350">
@@ -77,7 +83,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(339.95447)">
     <path
        style="fill:none;stroke:#000000;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 0,1052.3622 v 0"
@@ -86,13 +93,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.9375;stroke-opacity:1"
-       x="2.229326"
-       y="1017.3225"
+       x="6.5820003"
+       y="933.61719"
        id="text4544"><tspan
          sodipodi:role="line"
          id="tspan4542"
-         x="2.229326"
-         y="1017.3225"
+         x="6.5820003"
+         y="933.61719"
          style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.9375;stroke-opacity:1">convex</tspan></text>
     <path
        style="fill:none;stroke:#0000ff;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -122,13 +129,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:37.5px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.9375;stroke-opacity:1"
-       x="0.64182919"
-       y="929.7962"
+       x="3.9900434"
+       y="1022.2069"
        id="text4560"><tspan
          sodipodi:role="line"
          id="tspan4558"
-         x="0.64182919"
-         y="929.7962"
+         x="3.9900434"
+         y="1022.2069"
          style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.9375;stroke-opacity:1">nonconvex</tspan></text>
     <text
        xml:space="preserve"
