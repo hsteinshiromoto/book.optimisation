@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'optimisation_map.eps' (pdf, eps, ps)
+%% Accompanies image file 'optimisation_map.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -53,12 +53,14 @@
   \begin{picture}(1,1.66693168)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength]{optimisation_map.eps}}%
-    \put(0.46966166,0.40159823){\color[rgb]{1,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}convex\end{tabular}}}}%
-    \put(0.46614877,0.28153238){\color[rgb]{1,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}nonconvex\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{optimisation_map.pdf}}%
+    \put(0.46376247,0.28815222){\color[rgb]{1,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}convex\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{optimisation_map.pdf}}%
+    \put(0.46161093,0.40677681){\color[rgb]{1,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}nonconvex\end{tabular}}}}%
     \put(0.15832314,0.36122587){\color[rgb]{0,0.48235294,0}\rotatebox{-30.437563}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}constrained\end{tabular}}}}}%
     \put(-0.00339739,0.33748102){\color[rgb]{0,0.48235294,0}\rotatebox{-30.437563}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}unconstrained\end{tabular}}}}}%
     \put(0.6134967,0.15149545){\color[rgb]{0,0,1}\rotatebox{30.192473}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}finite dimensional\end{tabular}}}}}%
     \put(0.51402581,0.21214058){\color[rgb]{0,0,1}\rotatebox{30.192473}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}infinite dimensional\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{optimisation_map.pdf}}%
   \end{picture}%
 \endgroup%
