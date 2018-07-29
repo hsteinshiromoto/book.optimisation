@@ -1,0 +1,50 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX root = ../main.tex
+
+\chapter{Variational Analysis}\label{sec:VA}
+
+To formulate the variational problem, first consider the $\mathcal{L}_p$
+norm defined as
+\begin{equation}\label{eq:lp norm}
+	||y||_{\mathcal{L}_p}=\left(\int_a^b |y(x)|^p\,dx\right)^{1/p},
+\end{equation}
+where $p\in\mathbb{R}_{\geq0}$. Now, the local minima of function can be
+defined
+
+\begin{definition}\label{def:VA:local minima}
+	Let $\mathbf{V}$ be a vector space of functions equipped with a norm 
+	$||\cdot||$, let $\mathbf{A}$ be a subset of $\mathbf{V}$, and let 
+	$J$ be a real-valued functional defined on $\mathbf{A}$. A function 
+	$y^\ast\in \mathbf{A}$ is a \emph{local minimum} of $J$ over 
+	$\mathbf{A}$ if there exists $\varepsilon>0$ such that the inequality
+	$$J(y^\ast)\leq J(y)$$
+	holds, for all $y\in \mathbf{A}$ satisfying $||y-y^\ast||<\varepsilon$.
+\end{definition}
+
+\section{First Variation and First-order Necessary Condition}
+
+\begin{definition}\label{def:VA:first variation}[First variation]
+	Let $\mathbf{V}$ be a function space, and let 
+	$J:\mathbf{V}\to\mathbb{R}$ be a functional. The linear functional
+	$\delta J|_y:\mathbf{V}\to\mathbb{R}$ is called the \emph{first 
+	variational of $J$ at $y$} if, for every $\eta\in\mathbf{V}$ and for
+	every $\alpha\in\mathbb{R}$, the equality
+	\begin{equation}
+		J(y+\alpha\eta) = J(y) + \delta J|_y(\eta)\alpha + o(\alpha)\;,
+	\end{equation}
+	where $o$ represents higher-order terms\footnote{$o(\alpha)/\alpha\to0$, 
+	as $\alpha\to0$.}.
+\end{definition}
+
+The first variation defined in Definition~\ref{def:VA:first variation} 
+corresponds to the Gateaux derivative of $J$:
+\[\delta J|_y(\eta)=\lim_{\alpha\to0}\dfrac{J(y+\alpha\eta)-J(y)}{\alpha}\;.\]
+
+\begin{definition}
+	Let $\mathbf{V}$ be a function space, and let 
+	$J:\mathbf{V}\to\mathbb{R}$ be a functional. Let $y^\ast$ be a local
+	minimum of $J$, the function $\alpha\eta$, where $\alpha\in\mathbb{R}$
+	and the function $\eta\in\mathbf{V}$, is said to be an 
+	\emph{admissible perturbation} (with respect to the subset 
+	$\mathbf{A}$) if $y^\ast+\alpha\eta\in\mathbf{A}$.
+\end{definition}
