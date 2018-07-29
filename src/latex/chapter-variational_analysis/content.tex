@@ -29,7 +29,7 @@ defined
 	$\delta J|_y:\mathbf{V}\to\mathbb{R}$ is called the \emph{first 
 	variational of $J$ at $y$} if, for every $\eta\in\mathbf{V}$ and for
 	every $\alpha\in\mathbb{R}$, the equality
-	\begin{equation}
+	\begin{equation}\label{eq:VA:first variational expansion}
 		J(y+\alpha\eta) = J(y) + \delta J|_y(\eta)\alpha + o(\alpha)\;,
 	\end{equation}
 	where $o$ represents higher-order terms\footnote{$o(\alpha)/\alpha\to0$, 
@@ -48,3 +48,33 @@ corresponds to the Gateaux derivative of $J$:
 	\emph{admissible perturbation} (with respect to the subset 
 	$\mathbf{A}$) if $y^\ast+\alpha\eta\in\mathbf{A}$.
 \end{definition}
+
+\begin{theorem}\label{thm:VA:first order necessary condition}
+	Let $\mathbf{V}$ be a function space, and let 
+	$J:\mathbf{V}\to\mathbb{R}$ be a functional. If $y^\ast\in\mathbf{A}$
+	is a local minimum of $J$ over $\mathbf{A}$, then
+	\[\delta J|_{y^\ast}(\eta)=0\;.\]
+\end{theorem}
+
+\begin{proof}
+	Theorem~\ref{thm:VA:first order necessary condition} claims that
+	\[\delta J|_{y^\ast}(\eta)=0\;.\]
+
+	To show this, suppose that $\delta J|_{y^\ast}(\eta)\neq0$. Then,
+	from the higher-order term of equation~\eqref{eq:VA:first variational expansion},
+	there exists $\varepsilon>0$ small enough so that the inequality
+	\[||\alpha||<\varepsilon, \alpha\neq0\]
+	implies
+	\[||o(\alpha)||<||\delta J|_{y^\ast}(\eta)\alpha||\;.\]
+
+	For these values of $\alpha$, equation~\eqref{eq:VA:first variational expansion}
+	gives
+	\begin{equation*}
+		J(y^\ast+\alpha\eta)-J(y^\ast)<\delta J|_{y^\ast}(\eta)\alpha + 
+		||\delta J|_{y^\ast}(\eta)\alpha||\;.
+	\end{equation*}
+	If $\alpha$ is restricted to have the opposite sign to 
+	$\delta J|_{y^\ast}(\eta)$, the the previous equation becomes
+	$J(y^\ast+\alpha\eta)-J(y^\ast)<0$. But this contradicts the fact
+	that $J$ has a minimum at $y^\ast$. Thus, the conclusion holds.
+\end{proof}
