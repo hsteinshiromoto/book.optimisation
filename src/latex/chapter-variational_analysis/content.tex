@@ -78,3 +78,21 @@ corresponds to the Gateaux derivative of $J$:
 	$J(y^\ast+\alpha\eta)-J(y^\ast)<0$. But this contradicts the fact
 	that $J$ has a minimum at $y^\ast$. Thus, the conclusion holds.
 \end{proof}
+
+\section{Basic Calculus of Variations Problem}
+
+Consider a function $L:\mathbb{R}\times\mathbb{R}\times\mathbb{R}\to\mathbb{R}$.
+Among all $\mathcal{C}^1$ curves $y:[a,b]\to\mathbb{R}$ satisfying given
+boundary conditions
+\begin{subequations}
+	\begin{equation}
+		y(a)=y_0,\quad y(b)=y_1
+	\end{equation}
+	find (local) minima of the cost functional
+	\begin{equation}
+		J(y)=\int_a^b L(x, y(x), y'(x))\,dx\;.
+	\end{equation}
+\end{subequations}
+
+The function $L$ is called \emph{Lagrangian}\index{Lagrangian}
+\index{Lagrangian function}
