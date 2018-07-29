@@ -3,6 +3,8 @@
 
 \chapter{Variational Analysis}\label{sec:VA}
 
+This is all from Liberzon's book
+
 To formulate the variational problem, first consider the $\mathcal{L}_p$
 norm defined as
 \begin{equation}\label{eq:lp norm}
@@ -85,7 +87,7 @@ Consider a function $L:\mathbb{R}\times\mathbb{R}\times\mathbb{R}\to\mathbb{R}$.
 Among all $\mathcal{C}^1$ curves $y:[a,b]\to\mathbb{R}$ satisfying given
 boundary conditions
 \begin{subequations}
-	\begin{equation}
+	\begin{equation}\label{eq:VA:va problem:boundary}
 		y(a)=y_0,\quad y(b)=y_1
 	\end{equation}
 	find (local) minima of the cost functional
@@ -96,3 +98,74 @@ boundary conditions
 
 The function $L$ is called \emph{Lagrangian}\index{Lagrangian}
 \index{Lagrangian function}
+
+\section{First-order Necessary Condition for Weak Extrema}
+
+Let $y$ be a test curve in $\mathbf{A}$. For an admissible perturbation,
+the new curve $y+\alpha\eta$ must satisfy the boundary conditions 
+\eqref{eq:VA:va problem:boundary}. This is true if and only if
+\[\eta(a)=\eta(b)=0\;.\]
+
+Recall the first variation of $J$. The left-hand side of Equation~
+\eqref{eq:VA:first variational expansion} is given by
+\begin{equation}\label{eq:DZV6ks2zrR}
+J(y+\alpha\eta)=\int_a^bL(x, y(x)+\alpha\eta(x),y'(x)+\alpha\eta'(x))
+\,dx\;.
+\end{equation}
+
+The first-order Taylor expansion of $J$ with respect to $\alpha$ is 
+given by expanding $L$ with respect to this term. From the chain rule,
+\begin{equation*}
+	\begin{array}{rcl}
+		J(y+\alpha\eta)&=&\int_a^b L(x, y(x), y'(x))\,dx\\
+		&&+\int_a^b\dfrac{\partial L}{\partial y}(x. y(x),y'(x))\alpha\eta(x)\,dx\\
+		&&+\int_a^b\dfrac{\partial L}{\partial y'}(x. y(x),y'(x))\alpha\eta'(x)\,dx\\
+		&&+\int_a^b o(\alpha)\,dx\;.
+	\end{array}
+\end{equation*}
+
+Matching this with the right-hand side of Equation~\eqref{eq:DZV6ks2zrR},
+one deduces that the first variation is
+\begin{equation}\label{eq:VA:n6VgzNVTbJ}
+	\delta J|_y(\eta)=\int_a^b\left(\dfrac{\partial L}{\partial y}(x,
+	y(x),y'(x))\eta(x) + \dfrac{\partial L}{\partial y'}(x,
+	y(x),y'(x))\eta'(x)\right)\, dx\;.
+\end{equation}
+The dependence of Equation~\eqref{eq:VA:n6VgzNVTbJ} on $\eta'$ can be
+eliminated using integration by parts in the second term of the right-
+hand side:
+\begin{equation}
+	\begin{array}{rcl}
+	\delta J|_y(\eta)&=&\int_a^b\dfrac{\partial L}{\partial y}(x,
+	y(x),y'(x))\eta(x)\,dx\\
+	&&+\int_a^b - \eta(x)\dfrac{\partial^2 L}{\partial x\partial y'}(x,
+	y(x),y'(x))\, dx\\
+	&&+\dfrac{\partial L}{\partial y'}(x, y(x), y'(x))\eta(x)|_a^b\;,
+	\end{array}
+\end{equation}
+where the last term is zero due to boundary conditions.
+
+Thus, if $y$ is an extremum, then one must have (WHY?)
+\begin{equation}\label{eq:VA:1cTER2Y3Qc}
+	\int_a^b\left(\dfrac{\partial L}{\partial y}(x,
+	y(x),y'(x))-\dfrac{\partial^2 L}{\partial x\partial y'}(x,
+	y(x),y'(x))\right)\eta(x)\,dx=0,
+\end{equation}
+for all $\mathcal{C}^1$ curves $\eta$ vanishing at endpoints $x=a$ and 
+$x=b$.
+
+\begin{lemma}\label{lem:VA:integral equiv to zero}
+	If a continuous function $\zeta:[a,b]\to\mathbb{R}$ is such that
+	\[\int_a^b \zeta(x)\eta(x)\,dx=0\;,\]
+	for all $\mathcal{C}^1$ functions $\eta:[a,b]\to\mathbb{R}$ with 
+	$\eta(a)=\eta(b)=0$, then $\zeta\equiv0$.
+\end{lemma}
+
+From Equation~\eqref{eq:VA:1cTER2Y3Qc} and Lemma~
+\eqref{lem:VA:integral equiv to zero}, $y$ is an extremum if the equality
+\begin{equation}
+	\dfrac{\partial L}{\partial y}(x,
+	y(x),y'(x))=\dfrac{\partial^2 L}{\partial x\partial y'}(x,
+	y(x),y'(x))
+\end{equation}
+holds, for every $x\in[a,b]$.
