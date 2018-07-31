@@ -1,6 +1,9 @@
 # Created by https://www.gitignore.io/api/latex,python,pycharm,sublimetext
 
 ### LaTeX ###
+# Other files
+*.nls
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
