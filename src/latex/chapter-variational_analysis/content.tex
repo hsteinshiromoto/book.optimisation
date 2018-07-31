@@ -117,10 +117,10 @@ The first-order Taylor expansion of $J$ with respect to $\alpha$ is
 given by expanding $L$ with respect to this term. From the chain rule,
 \begin{equation*}
 	\begin{array}{rcl}
-		J(y+\alpha\eta)&=&\int_a^b L(x, y(x), y'(x))\,dx\\
-		&&+\int_a^b\dfrac{\partial L}{\partial y}(x. y(x),y'(x))\alpha\eta(x)\,dx\\
-		&&+\int_a^b\dfrac{\partial L}{\partial y'}(x. y(x),y'(x))\alpha\eta'(x)\,dx\\
-		&&+\int_a^b o(\alpha)\,dx\;.
+		J(y+\alpha\eta)&=&\displaystyle\int_a^b L(x, y(x), y'(x))\,dx\\
+		&&+\displaystyle\int_a^b\dfrac{\partial L}{\partial y}(x. y(x),y'(x))\alpha\eta(x)\,dx\\
+		&&+\displaystyle\int_a^b\dfrac{\partial L}{\partial y'}(x. y(x),y'(x))\alpha\eta'(x)\,dx\\
+		&&+\displaystyle\int_a^b o(\alpha)\,dx\;.
 	\end{array}
 \end{equation*}
 
@@ -136,16 +136,17 @@ eliminated using integration by parts in the second term of the right-
 hand side:
 \begin{equation}
 	\begin{array}{rcl}
-	\delta J|_y(\eta)&=&\int_a^b\dfrac{\partial L}{\partial y}(x,
+	\delta J|_y(\eta)&=&\displaystyle\int_a^b\dfrac{\partial L}{\partial y}(x,
 	y(x),y'(x))\eta(x)\,dx\\
-	&&+\int_a^b - \eta(x)\dfrac{\partial^2 L}{\partial x\partial y'}(x,
+	&&+\displaystyle\int_a^b - \eta(x)\dfrac{\partial^2 L}{\partial x\partial y'}(x,
 	y(x),y'(x))\, dx\\
 	&&+\dfrac{\partial L}{\partial y'}(x, y(x), y'(x))\eta(x)|_a^b\;,
 	\end{array}
 \end{equation}
 where the last term is zero due to boundary conditions.
 
-Thus, if $y$ is an extremum, then one must have (WHY?)
+Thus, if $y$ is an extremum, then one must have (cf. 
+Theorem~\ref{thm:VA:first order necessary condition})
 \begin{equation}\label{eq:VA:1cTER2Y3Qc}
 	\int_a^b\left(\dfrac{\partial L}{\partial y}(x,
 	y(x),y'(x))-\dfrac{\partial^2 L}{\partial x\partial y'}(x,
