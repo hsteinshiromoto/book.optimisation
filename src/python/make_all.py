@@ -29,6 +29,8 @@ if __name__ == "__main__":
 			call(["makeindex", "main.nlo", "-s", "nomencl.ist", "-o", "main.nls"])
 		elif option == "biber":
 			call(["biber", "main"])
+		elif option == "all":
+			continue
 		else:
 			msg = "Expect option to be in {}. Got {}".format(options, option)
 			raise ValueError(msg)
