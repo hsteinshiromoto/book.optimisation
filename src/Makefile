@@ -1,3 +1,5 @@
+# Dependencies (linux)
+# texlive-xetex texlive-bibtex-extra texlive-fonts-extra
 
 main_filename = main
 
