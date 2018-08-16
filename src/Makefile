@@ -3,6 +3,12 @@
 
 main_filename = main
 
+check-packages:
+	dpkg -l | grep texlive-xetex
+	dpkg -l | grep texlive-bibtex-extra -c
+	dpkg -l | grep texlive-fonts-extra -c 
+	dpkg -l | grep biber -c 
+
 xelatex: 
 	cd latex && xelatex $(main_filename).tex
 
