@@ -1,5 +1,5 @@
-# Dependencies (linux)
-# texlive-xetex texlive-bibtex-extra texlive-fonts-extra
+# Dependencies (Debian Stretch)
+# sudo apt install texlive-xetex texlive-bibtex-extra texlive-fonts-extra biber
 
 main_filename = main
 
