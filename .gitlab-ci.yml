@@ -1,7 +1,7 @@
 compile_pdf:
   image: aergus/latex
   script:
-    - cd latex && xelatex main.tex \
+    - cd src/latex && xelatex main.tex \
                && makeindex main.idx \
                && makeindex main.nlo -s nomencl.ist -o main.nls \
                && biber main \
