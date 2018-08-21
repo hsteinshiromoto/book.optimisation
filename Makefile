@@ -3,11 +3,11 @@
 
 main_filename = main
 
-docker_user = hsteinshiromoto
-repo = tex
-tag = latest
+docker_image = hsteinshiromoto/tex:latest
 
 container_name = tex
+
+container_id = $(shell docker ps -qf "ancestor=$(docker_image)")
 
 check-packages:
 	dpkg -l | grep texlive-xetex
@@ -16,22 +16,26 @@ check-packages:
 	dpkg -l | grep biber -c 
 
 run:
-	docker run -v $(PWD):/home --name $(container_name) -t -d $(docker_user)/$(repo):$(tag)
+	docker run -v $(PWD):/home \
+			   -t -d $(docker_image)
 
 xelatex:
 	# cd latex && xelatex $(main_filename).tex
-	docker exec -it $(container_name) cd latex && xelatex $(main_filename).tex
+	docker exec -i $(container_id) \
+		   bash -c "cd src/latex && xelatex $(main_filename).tex"
 
 index: xelatex
-	cd latex && makeindex $(main_filename).idx
+	# cd src/latex && makeindex $(main_filename).idx
+	docker exec -i $(container_id) \
+		   bash -c "cd src/latex && makeindex $(main_filename).idx"
 	make xelatex
 
 nomenclature: xelatex
-	cd latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls
+	cd src/latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls
 	make xelatex
 
 bibliography: xelatex
-	cd latex && biber $(main_filename)
+	cd src/latex && biber $(main_filename)
 	make xelatex
 
 all: xelatex index nomenclature bibliography
