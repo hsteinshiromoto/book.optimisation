@@ -3,8 +3,9 @@ compile_pdf:
   script:
     - cd src/latex && xelatex main.tex \
                 && biber main \
-               #&& makeindex main.idx \
-               #&& makeindex main.nlo -s nomencl.ist -o main.nls \
+                && makeindex main.idx \
+                && makeindex main.nlo -s nomencl.ist -o main.nls \
+                #&& xelatex main.tex
                #&& biber main \
                #&& xelatex main.tex
   artifacts:
