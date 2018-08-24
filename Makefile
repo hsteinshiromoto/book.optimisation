@@ -31,7 +31,9 @@ index: xelatex
 	make xelatex
 
 nomenclature: xelatex
-	cd src/latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls
+	# cd src/latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls
+	docker exec -i $(container_id) \
+		   bash -c "cd src/latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls"
 	make xelatex
 
 bibliography: xelatex
