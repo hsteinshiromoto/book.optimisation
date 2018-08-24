@@ -6,7 +6,7 @@ compile_pdf:
                #&& makeindex main.idx \
                #&& makeindex main.nlo -s nomencl.ist -o main.nls \
                #&& biber main \
-               && xelatex main.tex
+               #&& xelatex main.tex
   artifacts:
     paths:
       - src/latex/main.pdf
