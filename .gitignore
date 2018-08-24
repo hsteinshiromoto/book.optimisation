@@ -2,7 +2,7 @@
 
 ### LaTeX ###
 # Other files
-*.nls
+# *.nls
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -130,10 +130,10 @@ acs-*.bib
 *.lol
 
 # makeidx
-*.idx
+#*.idx
 *.ilg
 *.ind
-*.ist
+# *.ist
 
 # minitoc
 *.maf
@@ -152,7 +152,7 @@ _minted*
 *.mw
 
 # nomencl
-*.nlo
+# *.nlo
 
 # pax
 *.pax
