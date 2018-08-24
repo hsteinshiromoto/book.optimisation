@@ -2,7 +2,7 @@ compile_pdf:
   image: hsteinshiromoto/tex
   script:
     - cd src/latex && xelatex main.tex \
-                && biber main
+                && biber main \
                #&& makeindex main.idx \
                #&& makeindex main.nlo -s nomencl.ist -o main.nls \
                #&& biber main \
