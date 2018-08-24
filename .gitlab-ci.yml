@@ -1,11 +1,12 @@
 compile_pdf:
   image: hsteinshiromoto/tex
   script:
-    - cd src/latex && xelatex main.tex #\
+    - cd src/latex && xelatex main.tex \
+                && biber main
                #&& makeindex main.idx \
                #&& makeindex main.nlo -s nomencl.ist -o main.nls \
                #&& biber main \
-               #&& xelatex main.tex
+               && xelatex main.tex
   artifacts:
     paths:
       - src/latex/main.pdf
