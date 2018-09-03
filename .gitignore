@@ -1,5 +1,5 @@
 # Created by https://www.gitignore.io/api/latex,python,pycharm,sublimetext
-src/presentations/
+
 ### LaTeX ###
 # Other files
 *.nls
@@ -23,7 +23,7 @@ src/presentations/
 *-converted-to.*
 # these rules might exclude image files for figures etc.
 # *.ps
-*.eps
+# *.eps
 *.pdf
 *.jpg
 
