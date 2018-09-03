@@ -2,7 +2,7 @@
 
 ### LaTeX ###
 # Other files
-*.nls
+# *.nls
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
