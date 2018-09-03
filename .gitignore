@@ -23,7 +23,7 @@
 *-converted-to.*
 # these rules might exclude image files for figures etc.
 # *.ps
-# *.eps
+*.eps
 *.pdf
 *.jpg
 
@@ -130,10 +130,10 @@ acs-*.bib
 *.lol
 
 # makeidx
-*.idx
+#*.idx
 *.ilg
 *.ind
-*.ist
+# *.ist
 
 # minitoc
 *.maf
@@ -152,7 +152,7 @@ _minted*
 *.mw
 
 # nomencl
-*.nlo
+# *.nlo
 
 # pax
 *.pax
