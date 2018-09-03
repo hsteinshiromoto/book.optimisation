@@ -1,0 +1,76 @@
+
+%%%%%%%%%%%%
+% Language %
+%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+
+\usepackage{ifxetex}
+\ifxetex
+	\usepackage{polyglossia}
+\else
+	\usepackage[english]{babel}
+\fi
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+
+% AMS fonts and symbols package
+
+\usepackage{amsfonts,amssymb,amsmath}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage{centernot}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+
+\usepackage{hyperref}% backref linktocpage pagebackref
+
+\hypersetup{
+% Uncomment the line below to remove all links (to references, figures, tables, etc)
+%draft, 
+colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,
+% Uncomment the line below if you want to have black links (e.g. for printing black and white)
+%colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV, 
+breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,
+plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,
+hypertexnames=true, pdfhighlight=/O, urlcolor=red!50!black, linkcolor=blue!75!black, citecolor=green!50!black,
+%
+% PDF file meta-information
+%
+pdftitle={},
+pdfauthor={},
+pdfsubject={},
+pdfkeywords={},
+pdfcreator={},
+pdfproducer={LaTeX}
+}
+
+\usepackage[capitalise,noabbrev]{cleveref} 	% Must be loaded after hyperref
+\usepackage{longtable}
+
+\usepackage{todonotes}
+
+% To create lists
+\usepackage{enumerate}
+
+\usepackage{paralist}
+
+\usepackage{setspace} %To set a linespacing
+\usepackage{multirow}
+
+\usepackage{caption}
+%\usepackage{subcaption}
+
+\usepackage{makeidx} %To create the index
+\makeindex
+
+\usepackage[intoc,refpage]{nomencl}
+\makenomenclature
+\renewcommand{\nomname}{List of Symbols/Abbreviations}

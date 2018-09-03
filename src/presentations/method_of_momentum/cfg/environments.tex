@@ -1,0 +1,204 @@
+% !TEX encoding = UTF-8 Unicode
+
+% \usepackage{ntheorem} % Do not use this package
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\iftoggle{presentation}{%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%																	%
+% Block environments												%
+%																	%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \setbeamertemplate{blocks}[default]
+\setbeamertemplate{blocks}[rounded][shadow=true]
+%\setbeamerfont{block title}{series=\bfseries}
+
+% Normal block environment settings
+\setbeamercolor{structure}{bg=gblue700,fg=white}
+\setbeamercolor*{block title}{fg=gblue700,
+bg=white}
+\setbeamercolor*{block body}{fg=black,
+bg=white}
+
+\makeatletter
+\pgfdeclareverticalshading{bmb@transition}{200cm}{%
+  color(0pt)=(gblue700); color(2pt)=(gblue700)}
+\makeatother
+
+
+% Example block settings
+\setbeamercolor*{block title example}{fg=white,
+bg=ggreen700}
+\setbeamercolor*{block body example}{fg=black,
+bg=ggreen100}
+\setbeamercolor{example text}{fg=black}
+
+% Alert block settings
+\setbeamercolor*{block title alerted}{fg=white,
+bg=gred500}
+\setbeamercolor*{block body alerted}{fg=black,
+bg=gred100}
+\setbeamercolor{alerted text}{fg=black}
+
+\newcommand*\redblock{enhanced,colback=gred50,
+boxrule=0.4pt,sharp corners,
+colframe=gred900,fonttitle=\bfseries}
+
+\newcommand*\postitblock{enhanced,colback=postitcolor,
+boxrule=0.4pt,sharp corners,
+colframe=postitcolor,fonttitle=\bfseries}
+
+\newcommand*\whiteblock{enhanced,colback=white,
+boxrule=0.4pt,sharp corners,
+colframe=ggrey300,fonttitle=\bfseries}
+
+\tcbset{enhanced,colback=gblue50,
+boxrule=0.4pt,sharp corners,
+colframe=gblue700,fonttitle=\bfseries}
+
+%% Testing blocks
+
+\newtcolorbox{dblock}[2][]{
+  beamer,
+  colback=white,
+  colframe=white,
+  coltitle=gblue700,
+  fonttitle=\normalfont\large,
+  overlay={
+ %   \draw[gblue700, thick] 
+    \draw[gblue700, ultra thick] 
+    ([xshift=6pt,yshift=-0.5\pgflinewidth]title.south west) --
+    ([xshift=-6pt,yshift=-0.5\pgflinewidth]title.south east);},
+  left=1mm,
+  right=1mm,
+  top=1mm,
+  bottom=1mm,
+  middle=1mm,
+  fuzzy shadow={0.6ex}{-0.6ex}{1pt}{0.5pt}{black!80!white},
+  #1,title=#2}
+\makeatletter
+\tikzset{beamer@color/.style={top color=white,bottom color=white}}
+\makeatother
+
+\newtcolorbox{tblock}[2][]{
+  beamer,
+  colback=white,
+  colframe=white,
+  coltitle=ggreen700,
+  fonttitle=\normalfont\large,
+  overlay={
+%    \draw[ggreen700, thick] 
+    \draw[ggreen700, ultra thick] 
+    ([xshift=6pt,yshift=-0.5\pgflinewidth]title.south west) --
+    ([xshift=-6pt,yshift=-0.5\pgflinewidth]title.south east);},
+  left=1mm,
+  right=1mm,
+  top=1mm,
+  bottom=1mm,
+  middle=1mm,
+  fuzzy shadow={0.6ex}{-0.6ex}{1pt}{0.5pt}{black!80!white},
+  #1,title=#2}
+\makeatletter
+\tikzset{beamer@color/.style={top color=white,bottom color=white}}
+\makeatother
+
+\newtcolorbox{oblock}[2][]{
+  beamer,
+  colback=white,
+  colframe=white,
+  coltitle=gorange700,
+  fonttitle=\normalfont\large,
+  overlay={
+%    \draw[ggreen700, thick] 
+    \draw[gorange700, ultra thick] 
+    ([xshift=6pt,yshift=-0.5\pgflinewidth]title.south west) --
+    ([xshift=-6pt,yshift=-0.5\pgflinewidth]title.south east);},
+  left=1mm,
+  right=1mm,
+  top=1mm,
+  bottom=1mm,
+  middle=1mm,
+  fuzzy shadow={0.6ex}{-0.6ex}{1pt}{0.5pt}{black!80!white},
+  #1,title=#2}
+\makeatletter
+\tikzset{beamer@color/.style={top color=white,bottom color=white}}
+\makeatother
+
+% For custom item with the color of the theorem block: currently not working
+\newenvironment{tlistenv}{\only{\setbeamercolor{local structure}{fg=gorange700}}}{}
+
+\newtcolorbox{rblock}[2][]{
+  beamer,
+  colback=white,
+  colframe=white,
+  coltitle=black,
+  fonttitle=\normalfont\large,
+  overlay={
+    \draw[black, ultra thick] 
+%    \draw[gblue700, ultra thick] 
+    ([xshift=6pt,yshift=-0.5\pgflinewidth]title.south west) --
+    ([xshift=-6pt,yshift=-0.5\pgflinewidth]title.south east);},
+  left=1mm,
+  right=1mm,
+  top=1mm,
+  bottom=1mm,
+  middle=1mm,
+  fuzzy shadow={0.6ex}{-0.6ex}{1pt}{0.5pt}{black!80!white},
+  #1,title=#2}
+\makeatletter
+\tikzset{beamer@color/.style={top color=white,bottom color=white}}
+\makeatother
+
+}{
+
+\iftoggle{chapter}{%
+
+	\declaretheorem[style=plain,qed=$\lrcorner$,numberwithin=chapter]{theorem}
+
+}{
+
+	\declaretheorem[style=plain,qed=$\lrcorner$,numbered=yes]{theorem}
+
+}
+
+
+% Theorem environments
+
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{lemma}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{corollary}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{proposition}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{claim}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{conjecture}
+
+% Remark and definition environments
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{assumption}
+\crefname{assumption}{Assumption}{Assumptions}
+\Crefname{assumption}{Assumption}{Assumptions}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{definition}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{remark}
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{problem}
+\crefname{problem}{Problem}{Problems}
+\Crefname{problem}{Problem}{Problems}
+
+\declaretheorem[style=definition,qed=$\lrcorner$,numberwithin=section]{question}
+\declaretheorem[style=definition,qed=$\lrcorner$,numbered=no]{answer}
+
+% Example environments
+
+\declaretheorem[style=definition,qed=$\lrcorner$,sibling=theorem]{example}
+
+% Proof environment
+\declaretheoremstyle[
+  spaceabove=6pt, spacebelow=6pt,
+  headfont=\normalfont\slshape,
+  notefont=\normalfont\slshape, notebraces={(}{)},
+  bodyfont=\normalfont,
+  postheadspace=1em,
+  qed=$\blacksquare$
+]{proofstyle}
+\declaretheorem[name=Proof,style=proofstyle,numbered=no]{theproof}
+
+}

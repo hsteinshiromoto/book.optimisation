@@ -279,17 +279,20 @@ isbn=false,%
 url=false,%
 backref=true,%
 texencoding=utf8,%
-bibencoding=utf8,
+bibencoding=utf8,%
 refsegment=chapter]{biblatex}
-\IfFileExists{./../Library.bib}{
+\IfFileExists{./Library.bib}{
 
- \addbibresource{./../Library}
+ \addbibresource{./Library}
  
 }{
 
-  \addbibresource[location=remote]{https://www.dropbox.com/s/r00o9lw76cksxvj/Library.bib?dl=1} 
+  \addbibresource[location=remote]{https://gitlab.com/hsteinshiromoto/bibliography/raw/master/Library.bib}  
 
 }
+
+
+
 %\renewcommand*{\bibfont}{\footnotesize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

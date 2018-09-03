@@ -1,0 +1,233 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX root = ../main.tex
+
+\chapter{Variational Analysis}\label{sec:VA}
+
+This is all from Liberzon's book
+
+To formulate the variational problem, first consider the $\mathcal{L}_p$
+norm defined as
+\begin{equation}\label{eq:lp norm}
+	||y||_{\mathcal{L}_p}=\left(\int_a^b |y(x)|^p\,dx\right)^{1/p},
+\end{equation}
+where $p\in\mathbb{R}_{\geq0}$. Now, the local minima of function can be
+defined
+
+\begin{definition}\label{def:VA:local minima}
+	Let $\mathbf{V}$ be a vector space of functions equipped with a norm 
+	$||\cdot||$, let $\mathbf{A}$ be a subset of $\mathbf{V}$, and let 
+	$J$ be a real-valued functional defined on $\mathbf{A}$. A function 
+	$y^\ast\in \mathbf{A}$ is a \emph{local minimum} of $J$ over 
+	$\mathbf{A}$ if there exists $\varepsilon>0$ such that the inequality
+	$$J(y^\ast)\leq J(y)$$
+	holds, for all $y\in \mathbf{A}$ satisfying $||y-y^\ast||<\varepsilon$.
+\end{definition}
+
+\section{First Variation and First-order Necessary Condition}
+
+\begin{definition}\label{def:VA:first variation}[First variation]
+	Let $\mathbf{V}$ be a function space, and let 
+	$J:\mathbf{V}\to\mathbb{R}$ be a functional. The linear functional
+	$\delta J|_y:\mathbf{V}\to\mathbb{R}$ is called the \emph{first 
+	variational of $J$ at $y$} if, for every $\eta\in\mathbf{V}$ and for
+	every $\alpha\in\mathbb{R}$, the equality
+	\begin{equation}\label{eq:VA:first variational expansion}
+		J(y+\alpha\eta) = J(y) + \delta J|_y(\eta)\alpha + o(\alpha)\;,
+	\end{equation}
+	where $o$ represents higher-order terms\footnote{$o(\alpha)/\alpha\to0$, 
+	as $\alpha\to0$.}.
+\end{definition}
+
+The first variation defined in Definition~\ref{def:VA:first variation} 
+corresponds to the Gateaux derivative of $J$:
+\[\delta J|_y(\eta)=\lim_{\alpha\to0}\dfrac{J(y+\alpha\eta)-J(y)}{\alpha}\;.\]
+
+\begin{definition}
+	Let $\mathbf{V}$ be a function space, and let 
+	$J:\mathbf{V}\to\mathbb{R}$ be a functional. Let $y^\ast$ be a local
+	minimum of $J$, the function $\alpha\eta$, where $\alpha\in\mathbb{R}$
+	and the function $\eta\in\mathbf{V}$, is said to be an 
+	\emph{admissible perturbation} (with respect to the subset 
+	$\mathbf{A}$) if $y^\ast+\alpha\eta\in\mathbf{A}$.
+\end{definition}
+
+\begin{theorem}\label{thm:VA:first order necessary condition}
+	Let $\mathbf{V}$ be a function space, and let 
+	$J:\mathbf{V}\to\mathbb{R}$ be a functional. If $y^\ast\in\mathbf{A}$
+	is a local minimum of $J$ over $\mathbf{A}$, then
+	\[\delta J|_{y^\ast}(\eta)=0\;.\]
+\end{theorem}
+
+\begin{proof}
+	Theorem~\ref{thm:VA:first order necessary condition} claims that
+	\[\delta J|_{y^\ast}(\eta)=0\;.\]
+
+	To show this, suppose that $\delta J|_{y^\ast}(\eta)\neq0$. Then,
+	from the higher-order term of equation~\eqref{eq:VA:first variational expansion},
+	there exists $\varepsilon>0$ small enough so that the inequality
+	\[||\alpha||<\varepsilon, \alpha\neq0\]
+	implies
+	\[||o(\alpha)||<||\delta J|_{y^\ast}(\eta)\alpha||\;.\]
+
+	For these values of $\alpha$, equation~\eqref{eq:VA:first variational expansion}
+	gives
+	\begin{equation*}
+		J(y^\ast+\alpha\eta)-J(y^\ast)<\delta J|_{y^\ast}(\eta)\alpha + 
+		||\delta J|_{y^\ast}(\eta)\alpha||\;.
+	\end{equation*}
+	If $\alpha$ is restricted to have the opposite sign to 
+	$\delta J|_{y^\ast}(\eta)$, the the previous equation becomes
+	$J(y^\ast+\alpha\eta)-J(y^\ast)<0$. But this contradicts the fact
+	that $J$ has a minimum at $y^\ast$. Thus, the conclusion holds.
+\end{proof}
+
+\section{Basic Calculus of Variations Problem}
+
+Consider a function $L:\mathbb{R}\times\mathbb{R}\times\mathbb{R}\to\mathbb{R}$.
+Among all $\mathcal{C}^1$ curves $y:[a,b]\to\mathbb{R}$ satisfying given
+boundary conditions
+\begin{subequations}
+	\begin{equation}\label{eq:VA:va problem:boundary}
+		y(a)=y_0,\quad y(b)=y_1
+	\end{equation}
+	find (local) minima of the cost functional
+	\begin{equation}
+		J(y)=\int_a^b L(x, y(x), y'(x))\,dx\;.
+	\end{equation}
+\end{subequations}
+
+The function $L$ is called \emph{Lagrangian}\index{Lagrangian}
+\index{Functionals!Lagrangian}
+
+\section{First-order Necessary Condition for Weak Extrema: The Euler-
+Lagrange Equation}
+
+Let $y$ be a test curve in $\mathbf{A}$. For an admissible perturbation,
+the new curve $y+\alpha\eta$ must satisfy the boundary conditions 
+\eqref{eq:VA:va problem:boundary}. This is true if and only if
+\[\eta(a)=\eta(b)=0\;.\]
+
+Recall the first variation of $J$. The left-hand side of Equation~
+\eqref{eq:VA:first variational expansion} is given by
+\begin{equation}\label{eq:DZV6ks2zrR}
+J(y+\alpha\eta)=\int_a^bL(x, y(x)+\alpha\eta(x),y'(x)+\alpha\eta'(x))
+\,dx\;.
+\end{equation}
+
+The first-order Taylor expansion of $J$ with respect to $\alpha$ is 
+given by expanding $L$ with respect to this term. From the chain rule,
+\begin{equation*}
+	\begin{array}{rcl}
+		J(y+\alpha\eta)&=&\displaystyle\int_a^b L(x, y(x), y'(x))\,dx\\
+		&&+\displaystyle\int_a^b\dfrac{\partial L}{\partial y}(x. y(x),y'(x))\alpha\eta(x)\,dx\\
+		&&+\displaystyle\int_a^b\dfrac{\partial L}{\partial y'}(x. y(x),y'(x))\alpha\eta'(x)\,dx\\
+		&&+\displaystyle\int_a^b o(\alpha)\,dx\;.
+	\end{array}
+\end{equation*}
+
+Matching this with the right-hand side of Equation~\eqref{eq:DZV6ks2zrR},
+one deduces that the first variation is
+\begin{fullwidth}
+	\begin{equation}\label{eq:VA:n6VgzNVTbJ}
+		\delta J|_y(\eta)=\int_a^b\left(\dfrac{\partial L}{\partial y}(x,
+		y(x),y'(x))\eta(x) + \dfrac{\partial L}{\partial y'}(x,
+		y(x),y'(x))\eta'(x)\right)\, dx\;.
+	\end{equation}
+\end{fullwidth}
+The dependence of Equation~\eqref{eq:VA:n6VgzNVTbJ} on $\eta'$ can be
+eliminated using integration by parts in the second term of the right-
+hand side:
+\begin{equation}
+	\begin{array}{rcl}
+	\delta J|_y(\eta)&=&\displaystyle\int_a^b\dfrac{\partial L}{\partial y}(x,
+	y(x),y'(x))\eta(x)\,dx\\
+	&&+\displaystyle\int_a^b - \eta(x)\dfrac{\partial^2 L}{\partial x\partial y'}(x,
+	y(x),y'(x))\, dx\\
+	&&+\dfrac{\partial L}{\partial y'}(x, y(x), y'(x))\eta(x)|_a^b\;,
+	\end{array}
+\end{equation}
+where the last term is zero due to boundary conditions.
+
+Thus, if $y$ is an extremum, then one must have (cf. 
+Theorem~\ref{thm:VA:first order necessary condition})
+\begin{equation}\label{eq:VA:1cTER2Y3Qc}
+	\int_a^b\left(\dfrac{\partial L}{\partial y}(x,
+	y(x),y'(x))-\dfrac{\partial^2 L}{\partial x\partial y'}(x,
+	y(x),y'(x))\right)\eta(x)\,dx=0,
+\end{equation}
+for all $\mathcal{C}^1$ curves $\eta$ vanishing at endpoints $x=a$ and 
+$x=b$.
+
+\begin{lemma}\label{lem:VA:integral equiv to zero}
+	If a continuous function $\zeta:[a,b]\to\mathbb{R}$ is such that
+	\[\int_a^b \zeta(x)\eta(x)\,dx=0\;,\]
+	for all $\mathcal{C}^1$ functions $\eta:[a,b]\to\mathbb{R}$ with 
+	$\eta(a)=\eta(b)=0$, then $\zeta\equiv0$.
+\end{lemma}
+
+From Equation~\eqref{eq:VA:1cTER2Y3Qc} and Lemma~
+\eqref{lem:VA:integral equiv to zero}, $y$ is an extremum if the equality
+\index{Euler-Lagrange equation}{Equations!Euler-Lagrange}
+\begin{equation}\tag{Euler-Lagrange}\label{eq:Euler-Lagrange}
+	\dfrac{\partial L}{\partial y}(x,
+	y(x),y'(x))=\dfrac{\partial^2 L}{\partial x\partial y'}(x,
+	y(x),y'(x))
+\end{equation}
+holds, for every $x\in[a,b]$.
+
+\subsection{Hamilton's Canonical Equations}
+
+The quantity
+\begin{equation}\label{eq:VA:momentum}\tag{momentum}
+	p=\dfrac{\partial^2L}{\partial x\partial y'}(x,y,y')
+\end{equation}
+is called \emph{momentum}. It is usually regarded as a function of $x$
+associated to a given curve $y=y(x)$. The second object is the 
+\emph{Hamiltonian}
+\begin{equation}\label{eq:VA:Hamiltonian}\tag{Hamiltonian}\index{Hamiltonian}
+	H(x,y,y',p)=p\cdot y' - L(x,y,y')\;,
+\end{equation}
+which is written as a function of four variables but becomes a function
+of $x$, when evaluated along a curve.
+
+The variables $p$ and $y$ are said to be \emph{canonical variables}\index{
+canonical variables}\index{Variables!canonical}. When $y$ satisfies the 
+\eqref{eq:Euler-Lagrange} equations, the differential equations
+describing the evolution of $y$ and $p$ along this extremal, when written
+in terms of the Hamiltonian $H$, takes the form
+\[
+	\dfrac{dy}{dx}=y'(x)=\dfrac{\partial H}{\partial p}(x, y(x), y'(x))\;.
+\]
+For $p$, we have
+\[
+	\dfrac{dp}{dx}=\dfrac{dL}{dx}\dfrac{\partial L}{\partial y'}(x, y(x), y'(x))
+	= \dfrac{\partial L}{\partial y}(x, y(x), y'(x))
+	=-\dfrac{\partial H}{\partial y}(x, y(x), y'(x))
+\]
+
+In other words, the two previous conditions can be stated as
+\begin{equation}\label{eq:VA:Hamiltonian:canonical}
+	\left\{\begin{array}{rcl}
+		y'&=&\dfrac{\partial H}{\partial p}\\
+		p'&=&-\dfrac{\partial H}{\partial y}\..
+	\end{array}\right.
+\end{equation}
+
+An important additional observation is that,
+\begin{equation}
+	\dfrac{\partial H}{\partial y'}(x, y, y', p)=p-\dfrac{\partial L}{\partial y'}(x, y, y')=0
+\end{equation}
+
+This suggests that, in addition to the canonical equations 
+\eqref{eq:VA:Hamiltonian:canonical}, another necessary condition for
+optimality should be that $H$ has a stationary point as a function $y'$
+along an optimal curve. To see this fact, relabel $y'$ as $z$ and note that,
+from the previous equation,
+\[
+	H(z)=\dfrac{\partial L}{\partial y'}L(x, y(x), y'(x))\cdot z - L(x, y(x), z)
+\]
+we claim that this function has a stationary point, when $z$ equals
+$y'(x)$. This implies that
+\[
+	\dfrac{dH}{dz}(y'(x))=\dfrac{\partial L}{\partial y'}(x, y(x), y'(x))-\left.\dfrac{\partial L}{\partial z}(x, y(x), z)\right|_{z=y'(x)}=0
+\]

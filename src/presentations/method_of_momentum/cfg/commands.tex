@@ -1,0 +1,97 @@
+% !TEX encoding = UTF-8 Unicode
+
+% To redeclare a MathOperator: begin
+% Not compatible with arXiv !
+\makeatletter
+\newcommand\RedeclareMathOperator{%
+  \@ifstar{\def\rmo@s{m}\rmo@redeclare}{\def\rmo@s{o}\rmo@redeclare}%
+}
+% this is taken from \renew@command
+\newcommand\rmo@redeclare[2]{%
+  \begingroup \escapechar\m@ne\xdef\@gtempa{{\string#1}}\endgroup
+  \expandafter\@ifundefined\@gtempa
+     {\@latex@error{\noexpand#1undefined}\@ehc}%
+     \relax
+  \expandafter\rmo@declmathop\rmo@s{#1}{#2}}
+% This is just \@declmathop without \@ifdefinable
+\newcommand\rmo@declmathop[3]{%
+  \DeclareRobustCommand{#2}{\qopname\newmcodes@#1{#3}}%
+}
+\@onlypreamble\RedeclareMathOperator
+\makeatother
+% end %
+
+% Commands
+
+\newcommand{\dx}{\dot{x}}
+\newcommand{\dy}{\dot{y}}
+\newcommand{\xp}{x^+}
+\newcommand{\lloc}{\mathcal{L}_\mathrm{loc}}
+\newcommand{\cl}{\mathtt{cl}}
+\newcommand{\dom}{\mathtt{dom}}
+\newcommand{\domp}{\mathtt{dom}_{\geq0}}
+\newcommand{\im}{\mathtt{im}}
+\newcommand{\OSC}{\mathcal{OSC}}
+\newcommand{\AC}{\mathcal{AC}}
+\newcommand{\supp}{\mathtt{supp}}
+\newcommand{\MAF}{\mathtt{MAF}}
+\newcommand{\id}{\mathtt{id}}
+\newcommand{\conv}{\mathtt{conv}}
+\newcommand{\sign}{\mathtt{sign}}
+\newcommand{\Liploc}{\cL\mathpzc{ip}_\mathrm{loc}}
+\newcommand{\Ploc}{\mathcal{P}_{\mathrm{loc}}}
+\renewcommand{\ae}{\mathrm{for\ a.e.\ }}
+\RedeclareMathOperator{\Re}{\mathtt{Re}}
+\RedeclareMathOperator{\Im}{\mathtt{Im}}
+\newcommand*{\qedf}{\hfill\ensuremath{\blacksquare}}
+\newcommand*{\qede}{\hfill\ensuremath{\blacksquare}}
+
+\newcommand{\pfrac}[2]{\raisebox{1pt}{\small \ensuremath{#1}}$/$\raisebox{-2pt}{\small \ensuremath{#2}}}
+
+% Commands with tt
+
+
+% Operators
+
+\DeclareMathOperator{\range}{\mathtt{range}}
+\DeclareMathOperator{\wnull}{\mathtt{null}}
+\DeclareMathOperator{\diag}{\mathtt{diag}}
+\DeclareMathOperator{\dist}{\mathtt{dist}}
+\DeclareMathOperator{\diverg}{\mathtt{div}}
+\RedeclareMathOperator{\div}{\mathtt{div}}
+\DeclareMathOperator{\sat}{\mathtt{sat}}
+\DeclareMathOperator{\real}{\mathtt{real}}
+\DeclareMathOperator{\rank}{\mathtt{rank}}
+
+\DeclareMathOperator*{\argmin}{\mathtt{argmin}} %Note: the * that follows \DeclareMathOperator sets the underscored option (the argument) underneath the operator like the \lim operator.
+
+\DeclareMathOperator{\interior}{\mathtt{int}}
+\DeclareMathOperator{\ext}{\mathtt{ext}}
+\DeclareMathOperator{\dir}{\mathrm{dir}}
+\DeclareMathOperator{\gph}{\mathrm{gph}}
+\DeclareMathOperator{\card}{\mathtt{card}}
+\DeclareMathOperator{\diam}{\mathtt{diam}}
+\DeclareMathOperator{\co}{\mathtt{co}}
+\DeclareMathOperator{\mes}{\mathtt{mes}}
+\DeclareMathOperator{\vol}{\mathtt{vol}}
+\DeclareMathOperator{\proj}{\mathtt{proj}}
+\DeclareMathOperator{\grad}{\mathtt{grad}}
+\DeclareMathOperator*{\esssup}{\mathtt{ess\ sup}}
+
+% Colors
+
+\newcommand{\black}{\color{black}}
+\newcommand{\blue}{\color{blue}}
+\newcommand{\red}{\color{red}}
+\newcommand{\new}{\color{black}}
+\renewcommand{\stop}{\color{black}}
+
+%\newcommand{\dif}[1]{\dot{\overgroup{\delta #1}}}
+%\ifxetex
+%	\newcommand{\widedot}[1]{\dot{\overgroup{#1}}}
+%\else
+%	\renewcommand{\widedot}[1]{\dot{\overgroup{#1}}}
+%\fi
+
+\definecolor{white}{HTML}{FFFFFF}
+\newcommand{\white}{\color{white}}
