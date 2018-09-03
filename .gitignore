@@ -1,5 +1,5 @@
 # Created by https://www.gitignore.io/api/latex,python,pycharm,sublimetext
-
+src/presentations/
 ### LaTeX ###
 # Other files
 *.nls
