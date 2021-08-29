@@ -11,3 +11,5 @@
 [LY08] D. G. Luenberger and Y. Yinyu. Linear and Nonlinear Programming. Springer, 2008.
 
 [VB96] L. Vandenberghe and S. Boyd. Semidefinite Programming. SIAM Review, 38(1):49–95, mar 1996.
+
+[NW06] J. Nocedal and S. Wright. Numerical Optimization. Operations Research and Financial Engineering. Springer, 2nd edition, 2006.
