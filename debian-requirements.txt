@@ -1,0 +1,17 @@
+# Misc.
+biber
+build-essential
+curl
+git
+gnupg2
+gosu
+latexmk
+make
+pandoc
+sudo
+texlive
+texlive-bibtex-extra
+texlive-fonts-extra
+texlive-xetex
+vim
+wget
