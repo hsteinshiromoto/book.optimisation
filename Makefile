@@ -15,7 +15,6 @@ DOCKER_PARENT_IMAGE="ubuntu:latest"
 endif
 
 ifndef DOCKER_IMAGE_NAME
-# GIT_REMOTE_NAME=basename $(git remote get-url origin) | awk -F '.git' '{print $1}')
 GIT_REMOTE=$(shell basename $(shell git remote get-url origin))
 GIT_REMOTE_NAME=$(shell echo $(GIT_REMOTE:.git=))
 DOCKER_IMAGE_NAME=hsteinshiromoto/${GIT_REMOTE_NAME}
