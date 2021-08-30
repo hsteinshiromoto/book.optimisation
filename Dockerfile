@@ -60,36 +60,20 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
 # ---
-# Set Python 3.9 as the default Python
-# ---
-## Install python 3.9
-## N.B.: Make sure to use this method to install python3.9, otherwise there will be two version-3 python available in ubuntu
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 &&\
-    update-alternatives --config python3
-
-## Install pip
-## N.B.: Preserve the order of first installing python 3.9 then pip
-RUN apt install -y python3-pip
-# ---
 # Copy Container Setup Scripts
 # ---
 COPY bin/entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY bin/setup_python.sh /usr/local/bin/setup_python.sh
-COPY bin/test_environment.py /usr/local/bin/test_environment.py
-COPY bin/setup.py /usr/local/bin/setup.py
-COPY python_requirements.txt /usr/local/python_requirements.txt
 
-RUN chmod +x /usr/local/bin/setup_python.sh && \
-    chmod +x /usr/local/bin/entrypoint.sh && \
-	chmod +x /usr/local/bin/test_environment.py && \
-	chmod +x /usr/local/bin/setup.py
-
-RUN bash /usr/local/bin/setup_python.sh test_environment && \
-	bash /usr/local/bin/setup_python.sh requirements
+RUN chmod +x /usr/local/bin/entrypoint.sh
 	
 # Create the "home" folder
 RUN mkdir -p $HOME
 WORKDIR $HOME
+
+# ---
+# Copy src files
+# ---
+COPY . $HOME
 
 # N.B.: Keep the order 1. entrypoint, 2. cmd
 USER $USERNAME
