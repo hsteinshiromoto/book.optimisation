@@ -17,6 +17,13 @@
 			,"nickfode.latex-formatter"
 			,"aaron-bond.better-comments"
 			,"tecosaur.latex-utilities"
+			,"coenraads.bracket-pair-colorizer-2"
+			,"phr0s.bib"
+			,"ibm.output-colorizer"
+			,"wayou.vscode-todo-highlight"
+			,"mhutchie.git-graph"
+			,"yzhang.markdown-all-in-one"
+			,"alefragnani.bookmarks"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
