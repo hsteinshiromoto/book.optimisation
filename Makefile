@@ -2,7 +2,10 @@
 # Arguments
 # ---
 
-# Files to be copied in build phase of the container
+ifndef BASENAME
+BASENAME=main
+endif
+
 ifndef DOCKER_TAG
 DOCKER_TAG=latest
 endif
@@ -31,21 +34,21 @@ build:
 
 ## Compile XeLaTeX
 compile:
-	cd src/latex && xelatex $(main_filename).tex
+	cd src/latex && xelatex ${BASENAME}.tex
 
 ## Compile index
 index: compile
-	cd src/latex && makeindex $(main_filename).idx
+	cd src/latex && makeindex ${BASENAME}.idx
 	make compile
 
 ## Compile nomenclature
 nomenclature: compile
-	cd src/latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls
+	cd src/latex && makeindex ${BASENAME).nlo -s nomencl.ist -o ${BASENAME}.nls
 	make compile
 
 ## Compile bibliography
 bibliography: compile
-	cd src/latex && biber $(main_filename)
+	cd src/latex && biber {BASENAME}
 	make compile
 
 all: compile index nomenclature bibliography
