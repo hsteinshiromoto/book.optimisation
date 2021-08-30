@@ -31,22 +31,16 @@ build:
 
 ## Compile XeLaTeX
 compile:
-	# cd latex && xelatex $(main_filename).tex
-	docker exec -i $(container_id) \
-		   bash -c "cd src/latex && xelatex $(main_filename).tex"
+	cd src/latex && xelatex $(main_filename).tex
 
 ## Compile index
 index: compile
-	# cd src/latex && makeindex $(main_filename).idx
-	docker exec -i $(container_id) \
-		   bash -c "cd src/latex && makeindex $(main_filename).idx"
+	cd src/latex && makeindex $(main_filename).idx
 	make compile
 
 ## Compile nomenclature
 nomenclature: compile
-	# cd src/latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls
-	docker exec -i $(container_id) \
-		   bash -c "cd src/latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls"
+	cd src/latex && makeindex $(main_filename).nlo -s nomencl.ist -o $(main_filename).nls
 	make compile
 
 ## Compile bibliography
